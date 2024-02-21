@@ -1,0 +1,58 @@
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+.weatherbody-day,
+.weatherbody-night {
+  height: 100vh;
+  display: grid;
+  background-color: #0a0a0a;
+  background-size: 400% 400%;
+  animation: gradient-animation 5s ease infinite;
+}
+
+.weatherbody-day {
+  background: linear-gradient(159deg, #00ffe2, #547fff, #1d58f9);
+}
+
+.weatherbody-night {
+  background: linear-gradient(180deg, #1f0bca 0%, #000b1f 100%);
+}
+
+.weather-grid {
+  display: flex;
+  padding: 1vw;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 1vw;
+}
+
+.component-container {
+  background: rgba(64, 64, 64, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  border-radius: 10px;
+  width: fit-content;
+  padding: 1vw;
+  height: fit-content;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
