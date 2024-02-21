@@ -50,6 +50,10 @@ The application will start running at `http://localhost:3000`.
 
 Contributions are welcome. Please open an issue or submit a pull request.
 
+## Inspiration
+
+I took a lot of inspo from [DariusLukasukas](https://github.com/DariusLukasukas)' weather app project so I strongly advise you to go take a look at his [project repository](https://github.com/DariusLukasukas/nextjs-weather-app) if you like these kinds of web apps :)
+
 ## License
 
 This project is licensed under the terms of the MIT license.
