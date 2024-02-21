@@ -4,7 +4,7 @@ This is a weather application built with Next.js, React, and TypeScript. It's my
 
 ## Overview
 
-The application provides real-time weather data for various locations. It displays the current temperature, UV index, hourly forecast, and a weekly forecast. It also includes a map component to visualize the location of the weather data.
+The application provides real-time weather data for various locations. It displays the current temperature, UV index, hourly forecast, and a weekly forecast. It also includes a map component to visualize the location of the weather data and a small news widget.
 
 ## Features
 
@@ -12,6 +12,7 @@ The application provides real-time weather data for various locations. It displa
 - **UV Index**: Shows the maximum UV index for the day.
 - **Hourly Forecast**: Provides an hourly weather forecast.
 - **Weekly Forecast**: Gives a weekly weather forecast.
+- **Country News**: Shows a headling of the country the selected city is situated in.
 - **Map**: Visualizes the location of the weather data.
 
 ## Technologies Used
