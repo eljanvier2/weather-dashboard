@@ -37,7 +37,7 @@ const MapComponent = ({ lat, lon }: MapComponentProps) => {
         width: "50%",
         height: "50%",
         padding: 0,
-        alignSelf: "flex-end",
+        alignSelf: "flex-start",
       }}>
       <div
         ref={mapContainerRef}
