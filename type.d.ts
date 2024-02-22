@@ -37,3 +37,10 @@ export interface News {
   publishedAt: string;
   content: string | null;
 }
+
+export interface NasaPicture {
+date:string;
+title:string;
+url:string;
+copyright:string;
+}

@@ -6,10 +6,21 @@ import UvIndex from "@/components/uvindex";
 import NewsComponent from "@/components/newscomponent";
 import { HourlyForecast } from "@/components/hourlyforecast";
 import MapComponent from "@/components/mapcomponent";
+import { NasaPicture, News } from "@/type";
+import Image from "next/image";
+import { NasaPictureComponent } from "@/components/nasapicturecomponent";
+import SunComponent from "@/components/suncomponent";
+import WindComponent from "@/components/windcomponent";
 
 require("dotenv").config();
 
-const WeatherPage = ({ weatherData, news }) => {
+interface WeatherPageProps {
+  weatherData: any;
+  news: News;
+  picture: NasaPicture;
+}
+
+const WeatherPage = ({ weatherData, news, picture }: WeatherPageProps) => {
   return (
     <div
       className={
@@ -35,7 +46,29 @@ const WeatherPage = ({ weatherData, news }) => {
           <HourlyForecast data={weatherData.hourly} />
           <NewsComponent news={news} />
         </div>
-        <MapComponent lat={weatherData.latitude} lon={weatherData.longitude} />
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            width: "50%",
+            height: "50%",
+          }}>
+          <div style={{ display: "flex", gap: "1vw" }}>
+            <SunComponent
+              sunrise={weatherData.daily.sunrise[0]}
+              sunset={weatherData.daily.sunset[0]}
+            />
+            <WindComponent
+              speed={weatherData.current.wind_speed_10m}
+              deg={weatherData.current.wind_direction_10m}
+            />
+          </div>
+          <MapComponent
+            lat={weatherData.latitude}
+            lon={weatherData.longitude}
+          />
+        </div>
+        <NasaPictureComponent picture={picture} />
         <OtherCities />
       </div>
     </div>
@@ -46,30 +79,42 @@ export async function getServerSideProps(context: {
   query: { lat: any; lon: any; city: any; timezone: any; country: any };
 }) {
   const { lat, lon, city, timezone, country } = context.query;
-  const [res1, res2] = await Promise.all([
+  const [weatherres, newsres, nasares] = await Promise.all([
     fetch(
       `https://api.open-meteo.com/v1/forecast?latitude=${
         lat ?? 44.84044
       }&longitude=${
         lon ?? -0.5805
-      }&current=temperature_2m,is_day,weather_code&hourly=temperature_2m,weather_code&daily=weather_code,temperature_2m_max,temperature_2m_min,sunrise,sunset,uv_index_max&timezone=${
+      }&current=temperature_2m,is_day,weather_code,wind_speed_10m,wind_direction_10m&hourly=temperature_2m,weather_code&daily=weather_code,temperature_2m_max,temperature_2m_min,sunrise,sunset,uv_index_max&timezone=${
         timezone ?? "Europe%2FLondon"
       }`
     ),
     fetch(
-      `https://newsapi.org/v2/top-headlines?country=${country}&apiKey=${process.env.NEWS_API_KEY}`
+      `https://newsapi.org/v2/top-headlines?country=${country ?? "fr"}&apiKey=${
+        process.env.NEWS_API_KEY
+      }`
+    ),
+    fetch(
+      `https://api.nasa.gov/planetary/apod?api_key=${process.env.NASA_API_KEY}`
     ),
   ]);
-  const weatherData = await res1.json();
-  const newsData = await res2.json();
+  const weatherData = await weatherres.json();
+  const newsData = await newsres.json();
   const articles = newsData.articles;
   const news = articles[Math.floor(Math.random() * articles.length)];
+  const picturejson = await nasares.json();
+  const picture = {
+    date: picturejson.date,
+    title: picturejson.title,
+    url: picturejson.url,
+    copyright: picturejson.copyright,
+  };
   if (city) {
     weatherData.city = city;
   } else {
     weatherData.city = "Bordeaux";
   }
-  return { props: { weatherData, news } };
+  return { props: { weatherData, news, picture } };
 }
 
 export default WeatherPage;

@@ -19,7 +19,7 @@ const MapComponent = ({ lat, lon }: MapComponentProps) => {
 
     const map = new mapboxgl.Map({
       container: mapContainerRef.current,
-      style: "mapbox://styles/elliotjanvier/clsw02z34006x01o3dasxgsgu",
+      style: "mapbox://styles/mapbox/standard",
       center: [lon, lat],
       zoom: 11,
       maxZoom: 15,
@@ -34,8 +34,8 @@ const MapComponent = ({ lat, lon }: MapComponentProps) => {
     <div
       className="component-container"
       style={{
-        width: "50%",
-        height: "50%",
+        width: "100%",
+        height: "100%",
         padding: 0,
         alignSelf: "flex-start",
       }}>
