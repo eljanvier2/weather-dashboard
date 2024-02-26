@@ -97,7 +97,9 @@ const WeatherPage = ({ weatherData, news, picture }: WeatherPageProps) => {
               speed={weatherData.current.wind_speed_10m}
               deg={weatherData.current.wind_direction_10m}
             />
-            <HumidityComponent humidity={weatherData.current.relative_humidity_2m} />
+            <HumidityComponent
+              humidity={weatherData.current.relative_humidity_2m}
+            />
           </div>
         </div>
         <div
@@ -130,7 +132,9 @@ export async function getServerSideProps(context: {
       }`
     ),
     fetch(
-      `https://air-quality-api.open-meteo.com/v1/air-quality?latitude=${lat}&longitude=${lon}&hourly=european_aqi&forecast_days=1`
+      `https://air-quality-api.open-meteo.com/v1/air-quality?latitude=${
+        lat ?? 44.84044
+      }&longitude=${lon ?? -0.5805}&hourly=european_aqi&forecast_days=1`
     ),
     fetch(
       `https://newsapi.org/v2/top-headlines?country=${country ?? "fr"}&apiKey=${
