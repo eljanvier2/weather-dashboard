@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Link from "next/link";
-import { City } from "@/interfaces/datainterfaces";
+import { City } from "@/type";
 
 interface CityButtonProps {
   city: City;

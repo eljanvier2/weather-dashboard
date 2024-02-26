@@ -12,9 +12,9 @@
 .weatherbody-day,
 .weatherbody-night {
   height: 100vh;
-  display: grid;
+  display: flex;
+  flex-direction: column;
   background-color: #0a0a0a;
-  background-size: 400% 400%;
   animation: gradient-animation 5s ease infinite;
 }
 
@@ -28,9 +28,11 @@
 
 .weather-grid {
   display: flex;
-  padding: 1vw;
+  padding-left: 1vw;
+  padding-right: 1vw;
   align-items: flex-start;
-  justify-content: flex-start;
+  align-self: center;
+  width: 90%;
   gap: 1vw;
 }
 
@@ -43,6 +45,60 @@
   width: fit-content;
   padding: 1vw;
   height: fit-content;
+  transition: all 0.5s;
+}
+
+.component-container:hover {
+  /* border: 1px solid #00ffe2; */
+  transform: scale(1.05);
+}
+
+.Btn {
+  border: none;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  position: relative;
+  background-color: rgb(31, 31, 31);
+  overflow: hidden;
+}
+
+.svgIcon {
+  transition-duration: 0.3s;
+}
+
+.svgIcon path {
+  fill: white;
+}
+
+.text {
+  position: absolute;
+  color: rgb(255, 255, 255);
+  width: 120px;
+  font-weight: 600;
+  opacity: 0;
+  transition-duration: 0.4s;
+}
+
+.Btn:hover {
+  width: 110px;
+  transition-duration: 0.4s;
+  border-radius: 30px;
+}
+
+.Btn:hover .text {
+  opacity: 1;
+  transition-duration: 0.4s;
+}
+
+.Btn:hover .svgIcon {
+  opacity: 0;
+  transition-duration: 0.3s;
 }
 
 @keyframes gradient {

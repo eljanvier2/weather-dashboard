@@ -1,4 +1,4 @@
-import { HourlyWeather } from "@/interfaces/datainterfaces";
+import { HourlyWeather } from "@/type";
 import { getHourMinutes } from "@/utils/gettimedata";
 import { weatherIcon } from "@/utils/iconparsing";
 import Image from "next/image";

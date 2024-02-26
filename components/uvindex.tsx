@@ -1,6 +1,7 @@
 import Sun from "@/public/icons/sun.png";
 import Image from "next/image";
 import { ComponentHeader } from "./componentheader";
+import MulticolorScale from "./multicolorscale";
 
 interface UvIndexProps {
   uv: number;
@@ -56,24 +57,10 @@ const UvIndex = (data: UvIndexProps) => {
         <span style={{ fontSize: "2rem" }}>{uvIndex.toPrecision(1)}</span>
         <span>{uvDescription(uvIndex)}</span>
       </div>
-      <div
-        style={{
-          background:
-            "linear-gradient(to right, rgba(255, 0, 0, 0.8),rgba(255, 127, 0, 0.8),rgba(255, 255, 0, 0.8),rgba(0, 255, 0, 0.8),rgba(0, 0, 255, 0.8),rgba(75, 0, 130, 0.8),rgba(143, 0, 255, 0.8) ",
-          width: "100%",
-          height: "1vh",
-          borderRadius: "0.5vh",
-        }}>
-        <div
-          style={{
-            background: "white",
-            marginLeft: `calc(${uvPercentage}% - 0.25vw)`,
-            width: "0.4vw",
-            height: "1vh",
-            borderRadius: "0.4vh",
-            border: "1px solid black",
-          }}></div>
-      </div>
+      <MulticolorScale
+        percentage={uvPercentage}
+        gradient="linear-gradient(to right, rgba(0, 128, 0, 1), rgba(255, 255, 0, 1), rgba(255, 165, 0, 1), rgba(255, 0, 0, 1), rgba(128, 0, 128, 1))"
+      />
       <div style={{ paddingTop: "1vh", width: "15vw" }}>
         {protection(uvIndex)}
       </div>

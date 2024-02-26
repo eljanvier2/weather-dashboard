@@ -7,7 +7,7 @@ import { Coda } from "next/font/google";
 import ArrowUp from "@/public/icons/arrow-up.png";
 import ArrowDown from "@/public/icons/arrow-down.png";
 import Link from "next/link";
-import { CurrentWeather } from "@/interfaces/datainterfaces";
+import { CurrentWeather } from "@/type";
 
 interface TemperatureComponentProps {
   data: CurrentWeather;

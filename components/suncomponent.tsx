@@ -21,6 +21,7 @@ const SunComponent = ({
           flexDirection: "column",
           justifyContent: "center",
           height: "100%",
+          minWidth: "8vw",
         }}>
         <div
           style={{

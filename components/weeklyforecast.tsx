@@ -1,7 +1,7 @@
 import { getDay } from "@/utils/gettimedata";
 import Image from "next/image";
 import { weatherIcon } from "@/utils/iconparsing";
-import { DailyWeather } from "@/interfaces/datainterfaces";
+import { DailyWeather } from "@/type";
 import Calendar from "@/public/icons/calendar.png";
 import { ComponentHeader } from "./componentheader";
 

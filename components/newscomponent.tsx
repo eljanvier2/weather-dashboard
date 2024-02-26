@@ -1,4 +1,4 @@
-import { News } from "@/interfaces/datainterfaces";
+import { News } from "@/type";
 import { getDay } from "@/utils/gettimedata";
 import NewsIcon from "@/public/icons/news-icon.png";
 import Image from "next/image";
@@ -26,7 +26,7 @@ const NewsComponent = ({ news }: NewsComponentProps) => {
   return (
     <div
       className="component-container"
-      style={{ width: "15vw", height: "fit-content" }}>
+      style={{ width: "100%", height: "fit-content" }}>
       <ComponentHeader title="Country News" icon={NewsIcon} />
       <div
         style={{

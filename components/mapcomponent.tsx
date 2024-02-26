@@ -1,9 +1,9 @@
 // page.js
 "use client";
 
-import Map, { NavigationControl, GeolocateControl } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import mapboxgl from "mapbox-gl";
+import ReactMapGL, { Layer, LayerProps, Source } from "react-map-gl";
 import { useRef, useEffect } from "react";
 require("dotenv").config();
 
@@ -13,23 +13,6 @@ interface MapComponentProps {
 }
 
 const MapComponent = ({ lat, lon }: MapComponentProps) => {
-  const mapContainerRef = useRef(null);
-  useEffect(() => {
-    mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAP_BOX_API_KEY || "";
-
-    const map = new mapboxgl.Map({
-      container: mapContainerRef.current,
-      style: "mapbox://styles/mapbox/standard",
-      center: [lon, lat],
-      zoom: 11,
-      maxZoom: 15,
-      minZoom: 9,
-      pitch: 45,
-    });
-  }, [lat, lon]);
-
-  // Clean up on unmount
-  // return () => map.remove();
   return (
     <div
       className="component-container"
@@ -40,14 +23,25 @@ const MapComponent = ({ lat, lon }: MapComponentProps) => {
         alignSelf: "flex-start",
       }}>
       <div
-        ref={mapContainerRef}
         style={{
           maxWidth: "100%",
           height: "100%",
           width: "100%",
           borderRadius: "10px",
         }}
-        id="map"></div>
+        id="map">
+        <ReactMapGL
+          mapboxAccessToken={process.env.NEXT_PUBLIC_MAP_BOX_API_KEY}
+          mapStyle="mapbox://styles/mapbox/standard"
+          latitude={lat}
+          longitude={lon}
+          zoom={11}
+          style={{ borderRadius: "10px" }}
+          maxZoom={15}
+          minZoom={9}
+          pitch={45}
+        />
+      </div>
     </div>
   );
 };

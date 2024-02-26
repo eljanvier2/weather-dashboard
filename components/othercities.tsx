@@ -71,10 +71,10 @@ const OtherCities = () => {
       <div style={{ width: "100%", paddingTop: "1vh" }}>
         {cities.map((city, index) => {
           return (
-            <div>
-              <CityButton city={city} key={index} />
+            <div key={index}>
+              <CityButton city={city} />
               {index < cities.length - 1 ? (
-                <div style={{ height: "1vh" }}></div>
+                <div style={{ height: "0.5vh" }}></div>
               ) : null}
             </div>
           );
