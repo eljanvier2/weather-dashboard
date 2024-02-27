@@ -32,9 +32,9 @@ const DayTemperaturesBar: React.FC<DayTemperaturesBarProps> = ({
     <div
       style={{
         backgroundColor: "rgba(0, 0, 0, 0.3)",
-        width: "60%",
-        height: "0.75vh",
-        borderRadius: "0.5vh",
+        width: "100px",
+        height: "8px",
+        borderRadius: "4px",
       }}>
       <div
         style={{
@@ -42,8 +42,8 @@ const DayTemperaturesBar: React.FC<DayTemperaturesBarProps> = ({
 
           backgroundColor: "lightgray",
           width: `${maxPercentage - minPercentage}%`,
-          height: "0.75vh",
-          borderRadius: "0.5vh",
+          height: "8px",
+          borderRadius: "4px",
           marginLeft: `${minPercentage}%`,
         }}></div>
     </div>
@@ -52,42 +52,46 @@ const DayTemperaturesBar: React.FC<DayTemperaturesBarProps> = ({
 
 const WeeklyForecast: React.FC<WeeklyForecastProps> = ({ data }) => {
   return (
-    <div className="component-container" style={{ width: "18vw" }}>
+    <div
+      className="component-container"
+      style={{ width: "350px", height: "100%" }}>
       <ComponentHeader title="Weekly Forecast" icon={Calendar} />
-      {data.time.map((day, index) => {
-        return (
-          <div key={index} className="day">
-            <span style={{ width: "4vw" }}>
-              {index === 0 ? "Today" : getDay(day)}
-            </span>
-            <Image
-              src={weatherIcon(data.weather_code[index]) ?? ""}
-              alt=""
-              width={"25"}
-              style={{
-                marginLeft: "1vw",
-                marginRight: "1vw",
-                alignSelf: "center",
-                justifySelf: "center",
-              }}
-            />
-            <div className="weekly-temperatures">
-              <span style={{ width: "1.5vw", textAlign: "start" }}>
-                {data.temperature_2m_min[index]}
+      <div style={{ paddingBottom: "18px" }}>
+        {data.time.map((day, index) => {
+          return (
+            <div key={index} className="day">
+              <span style={{ width: "70px" }}>
+                {index === 0 ? "Today" : getDay(day)}
               </span>
-              <DayTemperaturesBar
-                temperature_2m_max={data.temperature_2m_max}
-                temperature_2m_min={data.temperature_2m_min}
-                index={index}
+              <Image
+                src={weatherIcon(data.weather_code[index]) ?? ""}
+                alt=""
+                width={"25"}
+                style={{
+                  marginLeft: "18px",
+                  marginRight: "18px",
+                  alignSelf: "center",
+                  justifySelf: "center",
+                }}
               />
-              <span style={{ width: "1.5vw", textAlign: "end" }}>
-                {data.temperature_2m_max[index]}
-              </span>
+              <div className="weekly-temperatures">
+                <span style={{  textAlign: "start" }}>
+                  {data.temperature_2m_min[index]}
+                </span>
+                <DayTemperaturesBar
+                  temperature_2m_max={data.temperature_2m_max}
+                  temperature_2m_min={data.temperature_2m_min}
+                  index={index}
+                />
+                <span style={{ width: "26", textAlign: "end" }}>
+                  {data.temperature_2m_max[index]}
+                </span>
+              </div>
+              {/* {index !== data.time.length - 1 && <hr />} */}
             </div>
-            {/* {index !== data.time.length - 1 && <hr />} */}
-          </div>
-        );
-      })}
+          );
+        })}
+      </div>
     </div>
   );
 };

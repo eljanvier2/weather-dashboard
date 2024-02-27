@@ -10,6 +10,7 @@ export interface CurrentWeather {
   time: string;
   interval: number;
   temperature_2m: number;
+  apparent_temperature: number;
   is_day: number;
   weather_code: number;
 }
@@ -39,8 +40,8 @@ export interface News {
 }
 
 export interface NasaPicture {
-date:string;
-title:string;
-url:string;
-copyright:string;
+  date: string;
+  title: string;
+  url: string;
+  copyright: string;
 }

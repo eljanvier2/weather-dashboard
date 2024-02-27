@@ -45,23 +45,21 @@ const UvIndex = (data: UvIndexProps) => {
   return (
     <div
       className="component-container"
-      style={{ height: "fit-content", width: "100%" }}>
+      style={{ height: "180px", width: "100%" }}>
       <ComponentHeader title="Max UV Index" icon={Sun} />
       <div
         style={{
-          display: "flex",
-          flexDirection: "column",
-          paddingTop: "1vh",
-          paddingBottom: "1vh",
+          paddingTop: "10px",
+          paddingBottom: "10px",
         }}>
         <span style={{ fontSize: "2rem" }}>{uvIndex.toPrecision(1)}</span>
-        <span>{uvDescription(uvIndex)}</span>
+        <span > ({uvDescription(uvIndex)})</span>
       </div>
       <MulticolorScale
         percentage={uvPercentage}
         gradient="linear-gradient(to right, rgba(0, 128, 0, 1), rgba(255, 255, 0, 1), rgba(255, 165, 0, 1), rgba(255, 0, 0, 1), rgba(128, 0, 128, 1))"
       />
-      <div style={{ paddingTop: "1vh", width: "15vw" }}>
+      <div style={{ paddingTop: "10px", width: "262px" }}>
         {protection(uvIndex)}
       </div>
     </div>

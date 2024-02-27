@@ -26,14 +26,14 @@ const NewsComponent = ({ news }: NewsComponentProps) => {
   return (
     <div
       className="component-container"
-      style={{ width: "100%", height: "fit-content" }}>
+      style={{ width: "100%", height: "180px" }}>
       <ComponentHeader title="Country News" icon={NewsIcon} />
       <div
         style={{
           fontSize: "1.2rem",
           display: "-webkit-box",
           WebkitBoxOrient: "vertical",
-          WebkitLineClamp: 4,
+          WebkitLineClamp: 2,
           overflow: "hidden",
           textOverflow: "ellipsis",
         }}>

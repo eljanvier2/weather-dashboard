@@ -14,7 +14,7 @@ const HumidityComponent = ({ humidity }: { humidity: number }) => {
     }
   };
   return (
-    <div className="component-container" style={{ height: "18vh" }}>
+    <div className="component-container" style={{ height: "170px" }}>
       <ComponentHeader title="Humidity" icon={Water} />
       <div
         style={{

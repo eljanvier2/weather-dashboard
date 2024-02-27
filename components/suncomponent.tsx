@@ -13,21 +13,20 @@ const SunComponent = ({
   sunset: string;
 }) => {
   return (
-    <div className="component-container" style={{ height: "18vh" }}>
-      <ComponentHeader title="Sunrise & Sunset" icon={Sun} />
+    <div className="component-container" style={{ height: "170px" }}>
+      <ComponentHeader title="Twilight" icon={Sun} />
       <div
         style={{
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
           height: "100%",
-          minWidth: "8vw",
         }}>
         <div
           style={{
             display: "flex",
             justifyContent: "space-between",
-            gap: "0.5vw",
+            gap: "9px",
           }}>
           <div
             style={{

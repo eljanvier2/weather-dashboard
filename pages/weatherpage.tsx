@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import TemperatureComponent from "@/components/temperaturecomponent";
 import WeeklyForecast from "@/components/weeklyforecast";
 import OtherCities from "@/components/othercities";
@@ -14,6 +14,7 @@ import WindComponent from "@/components/windcomponent";
 import AirQualityComponent from "@/components/airqualitycomponent";
 import GithubButton from "@/components/githubutton";
 import HumidityComponent from "@/components/humiditycomponent";
+import FeelsLike from "@/components/feelslikecomponent";
 
 require("dotenv").config();
 
@@ -25,92 +26,110 @@ interface WeatherPageProps {
 
 const WeatherPage = ({ weatherData, news, picture }: WeatherPageProps) => {
   return (
-    <div
-      className={
-        weatherData.current.is_day === 1
-          ? "weatherbody-day"
-          : "weatherbody-night"
-      }>
+    <div>
+      <title>{`${weatherData.city} - Weather`}</title>
       <div
-        style={{
-          width: "100%",
-          height: "fit-content",
-          display: "flex",
-          justifyContent: "flex-end",
-          paddingRight: "1vw",
-          paddingTop: "1vh",
-          paddingBottom: "1vh",
-        }}>
-        <GithubButton />
-      </div>
-      <div className="weather-grid">
-        <div style={{ display: "flex", flexDirection: "column", gap: "1vh" }}>
-          <TemperatureComponent
-            data={weatherData.current}
-            dailyExtremes={{
-              max: weatherData.daily.temperature_2m_max[0],
-              min: weatherData.daily.temperature_2m_min[0],
-            }}
-            city={weatherData.city}
-            timezone={weatherData.timezone}
-          />
-          <WeeklyForecast data={weatherData.daily} />
-        </div>
+        className={
+          weatherData.current.is_day === 1
+            ? "weatherbody-day"
+            : "weatherbody-night"
+        }>
         <div
           style={{
+            width: "100%",
+            height: "fit-content",
             display: "flex",
-            flexDirection: "column",
-            gap: "1vh",
-            width: "20vw",
+            justifyContent: "flex-end",
+            paddingRight: "1vw",
+            paddingTop: "1vh",
+            paddingBottom: "1vh",
           }}>
-          <UvIndex uv={weatherData.daily.uv_index_max[0]} />
-          <HourlyForecast data={weatherData.hourly} />
-          <AirQualityComponent airQuality={parseInt(weatherData.airquality)} />
+          <GithubButton />
         </div>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            height: "100%",
-            width: "35vw",
-            gap: "1vh",
-          }}>
-          <NewsComponent news={news} />
+        <div className="weather-grid">
+          <div style={{ gridColumn: 1, gridRow: 1 }}>
+            <TemperatureComponent
+              data={weatherData.current}
+              dailyExtremes={{
+                max: weatherData.daily.temperature_2m_max[0],
+                min: weatherData.daily.temperature_2m_min[0],
+              }}
+              city={weatherData.city}
+              timezone={weatherData.timezone}
+            />
+          </div>
+          <div style={{ gridColumn: 1, gridRow: 2 }}>
+            <WeeklyForecast data={weatherData.daily} />
+          </div>
           <div
             style={{
+              gridColumn: 2,
+              gridRow: 1,
+              height: "100%",
               display: "flex",
               flexDirection: "column",
-              width: "100%",
-              height: "50%",
+              justifyContent: "space-between",
+              gap: "18px",
             }}>
+            <UvIndex uv={weatherData.daily.uv_index_max[0]} />
+            <HourlyForecast data={weatherData.hourly} />
+          </div>
+          <div
+            style={{
+              gridColumn: 2,
+              gridRow: 2,
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "space-between",
+              height: "100%",
+            }}>
+            <AirQualityComponent
+              airQuality={parseInt(weatherData.airquality)}
+            />
+            <div style={{ display: "flex", justifyContent: "space-between" }}>
+              <SunComponent
+                sunrise={weatherData.daily.sunrise[0]}
+                sunset={weatherData.daily.sunset[0]}
+              />
+              <WindComponent
+                speed={weatherData.current.wind_speed_10m}
+                deg={weatherData.current.wind_direction_10m}
+              />
+            </div>
+          </div>
+          <div style={{ gridColumn: 3, gridRow: 1 }}>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "space-between",
+                height: "100%",
+                gap: "18px",
+              }}>
+              <NewsComponent news={news} />
+              <div style={{ display: "flex", gap: "18px" }}>
+                <HumidityComponent
+                  humidity={weatherData.current.relative_humidity_2m}
+                />
+                <FeelsLike
+                  temperature={weatherData.current.temperature_2m}
+                  feltTemperature={weatherData.current.apparent_temperature}
+                />
+              </div>
+            </div>
+          </div>
+          <div style={{ gridColumn: 3, gridRow: 2 }}>
             <MapComponent
               lat={weatherData.latitude}
               lon={weatherData.longitude}
             />
           </div>
-          <div style={{ display: "flex", gap: "1vw" }}>
-            <SunComponent
-              sunrise={weatherData.daily.sunrise[0]}
-              sunset={weatherData.daily.sunset[0]}
-            />
-            <WindComponent
-              speed={weatherData.current.wind_speed_10m}
-              deg={weatherData.current.wind_direction_10m}
-            />
-            <HumidityComponent
-              humidity={weatherData.current.relative_humidity_2m}
-            />
+          <div style={{ gridColumn: 4, gridRow: 1 }}>
+            <NasaPictureComponent picture={picture} />
           </div>
-        </div>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "space-between",
-            gap: "1vh",
-          }}>
-          <NasaPictureComponent picture={picture} />
-          <OtherCities />
+          <div style={{ gridColumn: 4, gridRow: 2 }}>
+            <OtherCities />
+          </div>
         </div>
       </div>
     </div>
@@ -127,7 +146,7 @@ export async function getServerSideProps(context: {
         lat ?? 44.84044
       }&longitude=${
         lon ?? -0.5805
-      }&current=relative_humidity_2m,temperature_2m,is_day,weather_code,wind_speed_10m,wind_direction_10m&hourly=temperature_2m,weather_code&daily=weather_code,temperature_2m_max,temperature_2m_min,sunrise,sunset,uv_index_max&timezone=${
+      }&current=relative_humidity_2m,temperature_2m,is_day,weather_code,wind_speed_10m,wind_direction_10m,apparent_temperature&hourly=temperature_2m,weather_code&daily=weather_code,temperature_2m_max,temperature_2m_min,sunrise,sunset,uv_index_max&timezone=${
         timezone ?? "Europe%2FLondon"
       }`
     ),
@@ -167,7 +186,6 @@ export async function getServerSideProps(context: {
   } else {
     weatherData.city = "Bordeaux";
   }
-  console.log(weatherData.airquality);
   return { props: { weatherData, news, picture } };
 }
 

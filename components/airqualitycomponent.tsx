@@ -45,8 +45,8 @@ const AirQualityComponent = ({ airQuality }: { airQuality: number }) => {
       <span style={{ fontSize: "2rem" }}>
         {airQualityDescription(airQuality)}
       </span>
-      <span> ({airQuality} )</span>
-      <div style={{ paddingBottom: "1vh", paddingTop: "1vh" }}>
+      <span> ({airQuality})</span>
+      <div style={{ paddingBottom: "10px", paddingTop: "10px" }}>
         <MulticolorScale
           percentage={airQuality}
           gradient="linear-gradient(to right, rgba(0, 0, 255, 1), rgba(0, 128, 0, 1), rgba(255, 255, 0, 1), rgba(255, 165, 0, 1), rgba(255, 0, 0, 1), rgba(128, 0, 128, 1))"

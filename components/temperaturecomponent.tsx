@@ -26,7 +26,7 @@ const TemperatureComponent: React.FC<TemperatureComponentProps> = ({
   timezone,
 }) => {
   return (
-    <div className="component-container" style={{ width: "18vw" }}>
+    <div className="component-container" style={{ width:"100%", height:"100%" }}>
       <div
         style={{
           display: "flex",
@@ -51,7 +51,7 @@ const TemperatureComponent: React.FC<TemperatureComponentProps> = ({
           </div>
           <TimeComponent timezone={timezone} />
         </div>
-        <span style={{ alignSelf: "center", fontSize: "10vh" }}>
+        <span style={{ alignSelf: "center", fontSize: "8rem" }}>
           {data.temperature_2m}º
         </span>
         <div

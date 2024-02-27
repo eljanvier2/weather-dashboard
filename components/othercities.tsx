@@ -66,15 +66,15 @@ const OtherCities = () => {
     },
   ];
   return (
-    <div style={{ width: "18vw", height: "fit-content", alignSelf: "end" }}>
+    <div style={{ width: "350px", height: "fit-content", alignSelf: "end" }}>
       <ComponentHeader title="Other Cities" icon={CityIcon} />
-      <div style={{ width: "100%", paddingTop: "1vh" }}>
+      <div style={{ width: "100%", paddingTop: "10px" }}>
         {cities.map((city, index) => {
           return (
             <div key={index}>
               <CityButton city={city} />
               {index < cities.length - 1 ? (
-                <div style={{ height: "0.5vh" }}></div>
+                <div style={{ height: "7px" }}></div>
               ) : null}
             </div>
           );
