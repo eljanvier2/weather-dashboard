@@ -35,26 +35,191 @@
   grid-row: 40vh;
   column-gap: 1vw;
   align-items: flex-start;
-  align-self: center;
-  width: 80%;
+  padding: 0 calc(clamp(0px, 200px - 50vw, 200px));
   gap: 1vw;
 }
 
-@media (min-width: 600px) {
+.twilight-wind-component {
+}
+
+.humidity-feelslike-component {
+}
+
+@media (min-width: 300px) {
   .weather-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(1, 1fr);
+    width: 100%;
+  }
+  .temperature-component {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  .weeklyforecast-component {
+    grid-column: 1;
+    grid-row: 2;
+  }
+  .uvindex-hourlyforecast-component {
+    grid-column: 1;
+    grid-row: 3;
+  }
+
+  .airquality-twilight-wind-component {
+    grid-column: 1;
+    grid-row: 4;
+  }
+
+  .news-humidity-feelslike-component {
+    grid-column: 1;
+    grid-row: 5;
+  }
+
+  .map-component {
+    grid-column: 1;
+    grid-row: 6;
+  }
+
+  .nasa-component {
+    grid-column: 1;
+    grid-row: 7;
+  }
+
+  .othercities-component {
+    grid-column: 1;
+    grid-row: 8;
   }
 }
 
-@media (min-width: 900px) {
+@media (min-width: 750px) {
   .weather-grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
+  }
+  .temperature-component {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  .weeklyforecast-component {
+    grid-column: 1;
+    grid-row: 2;
+  }
+  .uvindex-hourlyforecast-component {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .airquality-twilight-wind-component {
+    grid-column: 2;
+    grid-row: 2;
+  }
+
+  .news-humidity-feelslike-component {
+    grid-column: 2;
+    grid-row: 3;
+  }
+
+  .map-component {
+    grid-column: 1;
+    grid-row: 3;
+  }
+
+  .nasa-component {
+    grid-column: 1;
+    grid-row: 4;
+  }
+
+  .othercities-component {
+    grid-column: 2;
+    grid-row: 4;
   }
 }
 
 @media (min-width: 1200px) {
   .weather-grid {
+    grid-template-columns: repeat(3, 1fr);
+    width: 80%;
+    padding:0;
+    align-self: center;
+  }
+  .temperature-component {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  .weeklyforecast-component {
+    grid-column: 1;
+    grid-row: 2;
+  }
+  .uvindex-hourlyforecast-component {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .airquality-twilight-wind-component {
+    grid-column: 2;
+    grid-row: 2;
+  }
+
+  .news-humidity-feelslike-component {
+    grid-column: 2;
+    grid-row: 3;
+  }
+
+  .map-component {
+    grid-column: 1;
+    grid-row: 3;
+  }
+
+  .nasa-component {
+    grid-column: 3;
+    grid-row: 1;
+  }
+
+  .othercities-component {
+    grid-column: 3;
+    grid-row: 2;
+  }
+}
+
+@media (min-width: 1575px) {
+  .weather-grid {
     grid-template-columns: repeat(4, 1fr);
+    width: 80%;
+  }
+  .temperature-component {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  .weeklyforecast-component {
+    grid-column: 1;
+    grid-row: 2;
+  }
+  .uvindex-hourlyforecast-component {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .airquality-twilight-wind-component {
+    grid-column: 2;
+    grid-row: 2;
+  }
+
+  .news-humidity-feelslike-component {
+    grid-column: 3;
+    grid-row: 1;
+  }
+
+  .map-component {
+    grid-column: 3;
+    grid-row: 2;
+  }
+
+  .nasa-component {
+    grid-column: 4;
+    grid-row: 1;
+  }
+
+  .othercities-component {
+    grid-column: 4;
+    grid-row: 2;
   }
 }
 

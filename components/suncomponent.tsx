@@ -13,7 +13,7 @@ const SunComponent = ({
   sunset: string;
 }) => {
   return (
-    <div className="component-container" style={{ height: "170px" }}>
+    <div className="component-container" style={{ height: "170px", width: "50%" }}>
       <ComponentHeader title="Twilight" icon={Sun} />
       <div
         style={{

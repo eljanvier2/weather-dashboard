@@ -47,7 +47,7 @@ const WeatherPage = ({ weatherData, news, picture }: WeatherPageProps) => {
           <GithubButton />
         </div>
         <div className="weather-grid">
-          <div style={{ gridColumn: 1, gridRow: 1 }}>
+          <div className="temperature-component">
             <TemperatureComponent
               data={weatherData.current}
               dailyExtremes={{
@@ -58,13 +58,12 @@ const WeatherPage = ({ weatherData, news, picture }: WeatherPageProps) => {
               timezone={weatherData.timezone}
             />
           </div>
-          <div style={{ gridColumn: 1, gridRow: 2 }}>
+          <div className="weeklyforecast-component">
             <WeeklyForecast data={weatherData.daily} />
           </div>
           <div
+            className="uvindex-hourlyforecast-component"
             style={{
-              gridColumn: 2,
-              gridRow: 1,
               height: "100%",
               display: "flex",
               flexDirection: "column",
@@ -75,9 +74,8 @@ const WeatherPage = ({ weatherData, news, picture }: WeatherPageProps) => {
             <HourlyForecast data={weatherData.hourly} />
           </div>
           <div
+            className="airquality-twilight-wind-component"
             style={{
-              gridColumn: 2,
-              gridRow: 2,
               display: "flex",
               flexDirection: "column",
               justifyContent: "space-between",
@@ -86,7 +84,13 @@ const WeatherPage = ({ weatherData, news, picture }: WeatherPageProps) => {
             <AirQualityComponent
               airQuality={parseInt(weatherData.airquality)}
             />
-            <div style={{ display: "flex", justifyContent: "space-between" }}>
+            <div
+              className="twilight-wind-component"
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                gap: "18px",
+              }}>
               <SunComponent
                 sunrise={weatherData.daily.sunrise[0]}
                 sunset={weatherData.daily.sunset[0]}
@@ -97,7 +101,7 @@ const WeatherPage = ({ weatherData, news, picture }: WeatherPageProps) => {
               />
             </div>
           </div>
-          <div style={{ gridColumn: 3, gridRow: 1 }}>
+          <div className="news-humidity-feelslike-component">
             <div
               style={{
                 display: "flex",
@@ -107,7 +111,9 @@ const WeatherPage = ({ weatherData, news, picture }: WeatherPageProps) => {
                 gap: "18px",
               }}>
               <NewsComponent news={news} />
-              <div style={{ display: "flex", gap: "18px" }}>
+              <div
+                className="humidity-feelslike-component"
+                style={{ display: "flex", gap: "18px" }}>
                 <HumidityComponent
                   humidity={weatherData.current.relative_humidity_2m}
                 />
@@ -118,16 +124,16 @@ const WeatherPage = ({ weatherData, news, picture }: WeatherPageProps) => {
               </div>
             </div>
           </div>
-          <div style={{ gridColumn: 3, gridRow: 2 }}>
+          <div className="map-component">
             <MapComponent
               lat={weatherData.latitude}
               lon={weatherData.longitude}
             />
           </div>
-          <div style={{ gridColumn: 4, gridRow: 1 }}>
+          <div className="nasa-component">
             <NasaPictureComponent picture={picture} />
           </div>
-          <div style={{ gridColumn: 4, gridRow: 2 }}>
+          <div className="othercities-component">
             <OtherCities />
           </div>
         </div>
