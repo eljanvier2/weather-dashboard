@@ -10,7 +10,7 @@ const CityButton = (props: CityButtonProps) => {
   const [hover, setHover] = useState(false);
   return (
     <Link
-      href={`/weatherpage?lat=${props.city.latitude}&lon=${props.city.longitude}&city=${props.city.name}&timezone=${props.city.timezone}&country=${props.city.country}`}>
+      href={`/weatherpage?lat=${props.city.latitude}&lon=${props.city.longitude}&city=${props.city.name}&timezone=${props.city.timezone}&country=${props.city.country_code}`}>
       <div
         className="button"
         onMouseEnter={() => setHover(true)}

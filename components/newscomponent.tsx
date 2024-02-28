@@ -30,32 +30,43 @@ const NewsComponent = ({ news }: NewsComponentProps) => {
       <ComponentHeader title="Country News" icon={NewsIcon} />
       <div
         style={{
-          fontSize: "1.2rem",
-          display: "-webkit-box",
-          WebkitBoxOrient: "vertical",
-          WebkitLineClamp: 2,
-          overflow: "hidden",
-          textOverflow: "ellipsis",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "space-between",
+          height: "100%",
+          paddingBottom:"27px"
         }}>
-        {news.title}
-      </div>
-      <Link legacyBehavior href={news.url}>
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          onMouseEnter={() => setHover(true)}
-          onMouseLeave={() => setHover(false)}
-          style={{ display: "flex", width: "fit-content" }}>
-          <span style={{ textDecorationLine: hover ? "underline" : "" }}>
-            {"View Article "}
-          </span>
-          <Image src={OpenLink} alt="Open Link" height={20} />
-        </a>
-      </Link>
-      <div style={{ color: "lightgrey", fontWeight: "lighter" }}>
-        {isToday(news.publishedAt) ? "Today" : getDay(news.publishedAt)} at{" "}
-        {news.publishedAt.split("T")[1].split(":")[0]}:
-        {news.publishedAt.split("T")[1].split(":")[1]}
+        <div>
+          <div
+            style={{
+              fontSize: "1.2rem",
+              display: "-webkit-box",
+              WebkitBoxOrient: "vertical",
+              WebkitLineClamp: 2,
+              overflow: "hidden",
+              textOverflow: "ellipsis",
+            }}>
+            {news.title}
+          </div>
+          <Link legacyBehavior href={news.url}>
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              onMouseEnter={() => setHover(true)}
+              onMouseLeave={() => setHover(false)}
+              style={{ display: "flex", width: "fit-content" }}>
+              <span style={{ textDecorationLine: hover ? "underline" : "" }}>
+                {"View Article "}
+              </span>
+              <Image src={OpenLink} alt="Open Link" height={20} />
+            </a>
+          </Link>
+        </div>
+        <div style={{ color: "lightgrey", fontWeight: "lighter" }}>
+          {isToday(news.publishedAt) ? "Today" : getDay(news.publishedAt)} at{" "}
+          {news.publishedAt.split("T")[1].split(":")[0]}:
+          {news.publishedAt.split("T")[1].split(":")[1]}
+        </div>
       </div>
     </div>
   );

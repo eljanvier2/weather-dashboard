@@ -15,6 +15,8 @@ import AirQualityComponent from "@/components/airqualitycomponent";
 import GithubButton from "@/components/githubutton";
 import HumidityComponent from "@/components/humiditycomponent";
 import FeelsLike from "@/components/feelslikecomponent";
+import { useState, useEffect } from "react";
+import SearchComponent from "@/components/searchcomponent";
 
 require("dotenv").config();
 
@@ -25,8 +27,35 @@ interface WeatherPageProps {
 }
 
 const WeatherPage = ({ weatherData, news, picture }: WeatherPageProps) => {
+  const [inputValue, setInputValue] = useState("");
+  const [options, setOptions] = useState([]);
+
+  useEffect(() => {
+    const fetchOptions = async () => {
+      if (inputValue) {
+        let res = await fetch(`/api/cityAutocomplete?inputValue=${inputValue}`);
+        const response = await res.json();
+        if (response.results.length === 0) {
+          setOptions([]);
+          return;
+        }
+        const options = response.results.map((result: any) => ({
+          name: result.city,
+          country: result.country,
+          country_code: result.country_code,
+          latitude: result.lat,
+          longitude: result.lon,
+          timezone: result.timezone.name.replace("/", "%2F"),
+        }));
+        setOptions(options);
+        return;
+      }
+      setOptions([]);
+    };
+    fetchOptions();
+  }, [inputValue]);
   return (
-    <div style={{overflowX:"hidden"}}>
+    <div style={{ overflowX: "hidden" }}>
       <title>{`${weatherData.city} - Weather`}</title>
       <div
         className={
@@ -39,11 +68,22 @@ const WeatherPage = ({ weatherData, news, picture }: WeatherPageProps) => {
             width: "100%",
             height: "fit-content",
             display: "flex",
-            justifyContent: "flex-end",
+            justifyContent: "space-between",
             paddingRight: "1vw",
             paddingTop: "1vh",
             paddingBottom: "1vh",
           }}>
+          <div />
+          <SearchComponent
+            onChange={(e: string) => {
+              setInputValue(e);
+              if (e.length === 0) {
+                setOptions([]);
+              }
+            }}
+            autocompleteOptions={options}
+            resetOptionsArray={() => setOptions([])}
+          />
           <GithubButton />
         </div>
         <div className="weather-grid">
@@ -143,9 +183,16 @@ const WeatherPage = ({ weatherData, news, picture }: WeatherPageProps) => {
 };
 
 export async function getServerSideProps(context: {
-  query: { lat: any; lon: any; city: any; timezone: any; country: any };
+  query: {
+    lat: any;
+    lon: any;
+    city: string;
+    timezone: string;
+    country: string;
+  };
 }) {
   const { lat, lon, city, timezone, country } = context.query;
+
   const [weatherres, airqualitres, newsres, nasares] = await Promise.all([
     fetch(
       `https://api.open-meteo.com/v1/forecast?latitude=${

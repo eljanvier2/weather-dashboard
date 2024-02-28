@@ -4,6 +4,7 @@ export interface City {
   longitude: number;
   timezone: string;
   country: string;
+  country_code: string;
 }
 
 export interface CurrentWeather {
