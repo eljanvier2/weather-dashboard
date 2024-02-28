@@ -21,17 +21,17 @@ const AirQualityComponent = ({ airQuality }: { airQuality: number }) => {
 
   const warnings = (index: number) => {
     if (index < 20) {
-      return "Air quality is considered satisfactory, and air pollution poses little or no risk.";
+      return "Air quality is good, and air pollution poses little or no risk.";
     } else if (index < 40) {
-      return "Air quality is acceptable; however, for some pollutants there may be a moderate health concern for a very small number of people who are unusually sensitive to air pollution.";
+      return "Air quality is acceptable. Moderate health concern for very sensitive people.";
     } else if (index < 60) {
-      return "Members of sensitive groups may experience health effects. The general public is not likely to be affected.";
+      return "Members of sensitive groups may experience health effects.";
     } else if (index < 80) {
-      return "Everyone may begin to experience health effects; members of sensitive groups may experience more serious health effects.";
+      return "Everyone may begin to experience health effects.";
     } else if (index < 100) {
       return "Health alert: everyone may experience more serious health effects.";
     } else {
-      return "Health warnings of emergency conditions. The entire population is more likely to be affected.";
+      return "Health warnings of emergency conditions.";
     }
   };
 

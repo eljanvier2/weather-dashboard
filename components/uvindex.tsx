@@ -32,9 +32,9 @@ const UvIndex = (data: UvIndexProps) => {
     if (index < 3) {
       return "Minimal protection required";
     } else if (index < 6) {
-      return "Wear sunglasses on bright days. If you burn easily, cover up and use broad spectrum SPF 30+ sunscreen.";
+      return "If you burn easily, use SPF 30+ sunscreen.";
     } else if (index < 8) {
-      return "Take precautions, such as covering up, if you will be outside. Stay in shade near midday when the sun is strongest.";
+      return "Stay in shade when the sun is strongest.";
     } else if (index < 11) {
       return "Protection required - UV damages skin and can cause sunburn";
     } else {

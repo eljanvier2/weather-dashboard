@@ -26,7 +26,7 @@ interface WeatherPageProps {
 
 const WeatherPage = ({ weatherData, news, picture }: WeatherPageProps) => {
   return (
-    <div>
+    <div style={{overflowX:"hidden"}}>
       <title>{`${weatherData.city} - Weather`}</title>
       <div
         className={

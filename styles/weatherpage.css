@@ -11,7 +11,9 @@
 }
 .weatherbody-day,
 .weatherbody-night {
-  height: 100vh;
+  min-height: 100vh;
+  max-height: 400vh;
+  width: 100vw;
   display: flex;
   flex-direction: column;
   background-color: #0a0a0a;
@@ -37,6 +39,7 @@
   align-items: flex-start;
   padding: 0 calc(clamp(0px, 200px - 50vw, 200px));
   gap: 1vw;
+  max-width: 2000px;
 }
 
 .twilight-wind-component {
@@ -137,7 +140,7 @@
   .weather-grid {
     grid-template-columns: repeat(3, 1fr);
     width: 80%;
-    padding:0;
+    padding: 0;
     align-self: center;
   }
   .temperature-component {
