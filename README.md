@@ -4,7 +4,7 @@ This is a weather application built with Next.js, React, and TypeScript. It's my
 
 ## Overview
 
-The application provides real-time weather data for various locations. It displays the current temperature, UV index, hourly forecast, and a weekly forecast. It also includes a map component to visualize the location of the weather data and a small news widget.
+The application provides real-time weather data for various locations. It displays the current temperature, UV index, hourly forecast, and many other useful widgets !
 
 ## Features
 
@@ -14,6 +14,10 @@ The application provides real-time weather data for various locations. It displa
 - **Weekly Forecast**: Gives a weekly weather forecast.
 - **Country News**: Shows a headling of the country the selected city is situated in.
 - **Map**: Visualizes the location of the weather data.
+- **Nasa Photo of the Day**: Displays a random photo from the NASA POD API.
+- **Wind**: Gives you the wind speed and direction.
+- **Felt temperature**: Gives you the felt temperature at the selected location.
+- **Air quality**: Gives you the European index value of air quality.
 
 ## Technologies Used
 
@@ -27,21 +31,19 @@ The application provides real-time weather data for various locations. It displa
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/username/repository.git
+   git clone https://github.com/eljanvier2/weather-dashboard.git
    ```
-
-   Replace `https://github.com/username/repository.git` with the URL of your repository.
-
+   
 2. Install the dependencies:
 
    ```bash
-   yarn install
+   npm install || yarn install
    ```
 
 3. Start the development server:
 
    ```bash
-   yarn dev
+   npm run dev
    ```
 
 The application will start running at `http://localhost:3000`.
