@@ -12,7 +12,7 @@ export const HourlyForecast = ({ data }: HourlyForecastProps) => {
   return (
     <div
       className="component-container"
-      style={{ display: "flex", justifyContent:"center",height: "170px", gap: "35px", width:"100%" }}>
+      style={{ display: "flex", justifyContent:"center",alignItems:"center",height: "170px", gap: "35px", width:"100%" }}>
       {data.time.map((hour, index) => {
         const currentHour = new Date().getHours();
         const hourToCompare = parseInt(hour.split("T")[1].split(":")[0]);
@@ -25,7 +25,7 @@ export const HourlyForecast = ({ data }: HourlyForecastProps) => {
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
-                gap: "30px",
+                gap: "20px",
               }}>
               <span>{x === 1 ? "Now" : hourToCompare}</span>
               <Image

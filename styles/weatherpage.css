@@ -19,6 +19,7 @@
   background-color: #0a0a0a;
   animation: gradient-animation 5s ease infinite;
   background-size: 400% 400%;
+  overflow-y: hidden;
 }
 
 .weatherbody-day {
@@ -52,7 +53,8 @@
 @media (min-width: 300px) {
   .weather-grid {
     grid-template-columns: repeat(1, 1fr);
-    width: 100%;
+    width: 90%;
+    align-self: center;
   }
   .temperature-component {
     grid-column: 1;
@@ -61,42 +63,50 @@
   .weeklyforecast-component {
     grid-column: 1;
     grid-row: 2;
+    padding-top: 18px;
   }
   .uvindex-hourlyforecast-component {
     grid-column: 1;
     grid-row: 3;
+    padding-top: 18px;
   }
 
   .airquality-twilight-wind-component {
     grid-column: 1;
     grid-row: 4;
+    padding-top: 18px;
   }
 
   .news-humidity-feelslike-component {
     grid-column: 1;
     grid-row: 5;
+    padding-top: 18px;
   }
 
   .map-component {
     grid-column: 1;
     grid-row: 6;
+    padding-top: 18px;
   }
 
   .nasa-component {
     grid-column: 1;
     grid-row: 7;
+    padding-top: 18px;
   }
 
   .othercities-component {
     grid-column: 1;
     grid-row: 8;
+    padding-top: 18px;
   }
 }
 
 @media (min-width: 750px) {
   .weather-grid {
     grid-template-columns: repeat(2, 1fr);
-    width: 100%;
+    width: 95%;
+    align-self: center;
   }
   .temperature-component {
     grid-column: 1;
@@ -105,42 +115,49 @@
   .weeklyforecast-component {
     grid-column: 1;
     grid-row: 2;
+    padding-top: 0;
   }
   .uvindex-hourlyforecast-component {
     grid-column: 2;
     grid-row: 1;
+    padding-top: 0;
   }
 
   .airquality-twilight-wind-component {
     grid-column: 2;
     grid-row: 2;
+    padding-top: 0;
   }
 
   .news-humidity-feelslike-component {
     grid-column: 2;
     grid-row: 3;
+    padding-top: 0;
   }
 
   .map-component {
     grid-column: 1;
     grid-row: 3;
+    padding-top: 0;
   }
 
   .nasa-component {
     grid-column: 1;
     grid-row: 4;
+    padding-top: 18px;
   }
 
   .othercities-component {
     grid-column: 2;
     grid-row: 4;
+    padding-top: 18px;
   }
 }
 
 @media (min-width: 1200px) {
   .weather-grid {
     grid-template-columns: repeat(3, 1fr);
-    width: 80%;
+    width: 90%;
     padding: 0;
     align-self: center;
   }
@@ -175,11 +192,13 @@
   .nasa-component {
     grid-column: 3;
     grid-row: 1;
+    padding-top: 0;
   }
 
   .othercities-component {
     grid-column: 3;
     grid-row: 2;
+    padding-top: 0;
   }
 }
 
@@ -305,7 +324,7 @@
 
 .group {
   display: flex;
-justify-self: start;
+  justify-self: start;
   line-height: 28px;
   align-items: center;
   position: relative;

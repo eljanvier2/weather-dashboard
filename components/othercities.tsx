@@ -74,7 +74,7 @@ const OtherCities = () => {
     },
   ];
   return (
-    <div style={{ width: "350px", height: "fit-content", alignSelf: "end" }}>
+    <div style={{ width: "100%", height: "fit-content", alignSelf: "end" }}>
       <ComponentHeader title="Other Cities" icon={CityIcon} />
       <div style={{ width: "100%", paddingTop: "10px" }}>
         {cities.map((city, index) => {

@@ -9,7 +9,8 @@ export const NasaPictureComponent = ({ picture }: { picture: NasaPicture }) => {
     <div
       className="component-container"
       style={{
-        width: "360px",
+        minWidth: "350px",
+        width: "100%",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
@@ -20,14 +21,13 @@ export const NasaPictureComponent = ({ picture }: { picture: NasaPicture }) => {
         <ComponentHeader title="NASA Picture of the Day" icon={Planet} />
       </div>
       {!picture.url.includes("youtube") && (
-        <div style={{ maxHeight: "375px" }}>
+        <div style={{ maxHeight: "375px", height:"100%", display:"flex", flexDirection:"column", justifyContent:"space-evenly" }}>
           <Image
             src={picture.url}
             alt="NASA picture of the day"
             width={300}
             height={300}
-
-            style={{ borderRadius: "10px", maxHeight:"250px" }}
+            style={{ borderRadius: "10px", maxHeight: "250px", alignSelf:"center" }}
           />
 
           <div
@@ -39,7 +39,10 @@ export const NasaPictureComponent = ({ picture }: { picture: NasaPicture }) => {
         </div>
       )}
       {picture.url.includes("youtube") && (
-        <YouTube videoId={picture.url.split("embed/")[1]} />
+        <YouTube
+          style={{ borderRadius: "10px", maxHeight: "250px" }}
+          videoId={picture.url.split("embed/")[1]}
+        />
       )}
     </div>
   );

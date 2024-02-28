@@ -120,6 +120,7 @@ const WeatherPage = ({ weatherData, news, picture }: WeatherPageProps) => {
               flexDirection: "column",
               justifyContent: "space-between",
               height: "100%",
+              gap:"18px"
             }}>
             <AirQualityComponent
               airQuality={parseInt(weatherData.airquality)}
@@ -129,6 +130,7 @@ const WeatherPage = ({ weatherData, news, picture }: WeatherPageProps) => {
               style={{
                 display: "flex",
                 justifyContent: "space-between",
+                height:"100%",
                 gap: "18px",
               }}>
               <SunComponent
@@ -148,7 +150,7 @@ const WeatherPage = ({ weatherData, news, picture }: WeatherPageProps) => {
                 flexDirection: "column",
                 justifyContent: "space-between",
                 height: "100%",
-                gap: "18px",
+                gap: "25px",
               }}>
               <NewsComponent news={news} />
               <div
