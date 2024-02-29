@@ -1,9 +1,7 @@
-import Link from "next/link";
 import { useState } from "react";
-import CityButton from "./citybutton";
+import CityButton from "./CityButton";
 import CityIcon from "@/public/icons/city-icon.png";
-import Image from "next/image";
-import { ComponentHeader } from "./componentheader";
+import { ComponentHeader } from "./ComponentHeader";
 
 const OtherCities = () => {
   const [hover, setHover] = useState(false);
@@ -74,7 +72,7 @@ const OtherCities = () => {
     },
   ];
   return (
-    <div style={{  height: "fit-content", alignSelf: "end" }}>
+    <div style={{ height: "fit-content", alignSelf: "end" }}>
       <ComponentHeader title="Other Cities" icon={CityIcon} />
       <div style={{ width: "100%", paddingTop: "10px" }}>
         {cities.map((city, index) => {

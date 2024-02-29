@@ -1,4 +1,4 @@
-import { ComponentHeader } from "./componentheader";
+import { ComponentHeader } from "./ComponentHeader";
 import Sun from "../public/icons/fog.png";
 import { getHourMinutes } from "@/utils/gettimedata";
 import Sunrise from "../public/icons/sunrise.png";
@@ -13,7 +13,9 @@ const SunComponent = ({
   sunset: string;
 }) => {
   return (
-    <div className="component-container" style={{ height: "170px", width: "50%" }}>
+    <div
+      className="component-container"
+      style={{ height: "170px", width: "50%" }}>
       <ComponentHeader title="Twilight" icon={Sun} />
       <div
         style={{

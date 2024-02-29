@@ -1,7 +1,7 @@
 import Sun from "@/public/icons/sun.png";
 import Image from "next/image";
-import { ComponentHeader } from "./componentheader";
-import MulticolorScale from "./multicolorscale";
+import { ComponentHeader } from "./ComponentHeader";
+import MulticolorScale from "./MulticolorScale";
 
 interface UvIndexProps {
   uv: number;
@@ -43,9 +43,7 @@ const UvIndex = (data: UvIndexProps) => {
   };
 
   return (
-    <div
-      className="component-container"
-      style={{ height: "180px", }}>
+    <div className="component-container" style={{ height: "180px" }}>
       <ComponentHeader title="Max UV Index" icon={Sun} />
       <div
         style={{
@@ -53,7 +51,7 @@ const UvIndex = (data: UvIndexProps) => {
           paddingBottom: "10px",
         }}>
         <span style={{ fontSize: "2rem" }}>{uvIndex.toPrecision(1)}</span>
-        <span > ({uvDescription(uvIndex)})</span>
+        <span> ({uvDescription(uvIndex)})</span>
       </div>
       <MulticolorScale
         percentage={uvPercentage}

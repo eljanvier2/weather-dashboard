@@ -1,6 +1,6 @@
-import { ComponentHeader } from "./componentheader";
+import { ComponentHeader } from "./ComponentHeader";
 import Virus from "../public/icons/virus.png";
-import MulticolorScale from "./multicolorscale";
+import MulticolorScale from "./MulticolorScale";
 
 const AirQualityComponent = ({ airQuality }: { airQuality: number }) => {
   const airQualityDescription = (index: number) => {

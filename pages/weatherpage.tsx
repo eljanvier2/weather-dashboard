@@ -1,22 +1,22 @@
 import React, { Suspense } from "react";
-import TemperatureComponent from "@/components/temperaturecomponent";
-import WeeklyForecast from "@/components/weeklyforecast";
-import OtherCities from "@/components/othercities";
-import UvIndex from "@/components/uvindex";
-import NewsComponent from "@/components/newscomponent";
-import { HourlyForecast } from "@/components/hourlyforecast";
-import MapComponent from "@/components/mapcomponent";
+import TemperatureComponent from "@/components/TemperatureComponent";
+import WeeklyForecast from "@/components/WeeklyForecast";
+import OtherCities from "@/components/OtherCities";
+import UvIndex from "@/components/UVIndex";
+import NewsComponent from "@/components/NewsComponent";
+import { HourlyForecast } from "@/components/HourlyForecast";
+import MapComponent from "@/components/MapComponent";
 import { NasaPicture, News } from "@/type";
 import Image from "next/image";
-import { NasaPictureComponent } from "@/components/nasapicturecomponent";
-import SunComponent from "@/components/suncomponent";
-import WindComponent from "@/components/windcomponent";
-import AirQualityComponent from "@/components/airqualitycomponent";
-import GithubButton from "@/components/githubutton";
-import HumidityComponent from "@/components/humiditycomponent";
-import FeelsLike from "@/components/feelslikecomponent";
+import { NasaPictureComponent } from "@/components/NasaPictureComponent";
+import SunComponent from "@/components/SunComponent";
+import WindComponent from "@/components/WindComponent";
+import AirQualityComponent from "@/components/AirQualityComponent";
+import GithubButton from "@/components/GithubButton";
+import HumidityComponent from "@/components/HumidityComponent";
+import FeelsLike from "@/components/FeelsLikeComponent";
 import { useState, useEffect } from "react";
-import SearchComponent from "@/components/searchcomponent";
+import SearchComponent from "@/components/SearchComponent";
 
 require("dotenv").config();
 
@@ -120,7 +120,7 @@ const WeatherPage = ({ weatherData, news, picture }: WeatherPageProps) => {
               flexDirection: "column",
               justifyContent: "space-between",
               height: "100%",
-              gap:"18px"
+              gap: "18px",
             }}>
             <AirQualityComponent
               airQuality={parseInt(weatherData.airquality)}
@@ -130,7 +130,7 @@ const WeatherPage = ({ weatherData, news, picture }: WeatherPageProps) => {
               style={{
                 display: "flex",
                 justifyContent: "space-between",
-                height:"100%",
+                height: "100%",
                 gap: "18px",
               }}>
               <SunComponent

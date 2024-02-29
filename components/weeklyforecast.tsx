@@ -3,7 +3,7 @@ import Image from "next/image";
 import { weatherIcon } from "@/utils/iconparsing";
 import { DailyWeather } from "@/type";
 import Calendar from "@/public/icons/calendar.png";
-import { ComponentHeader } from "./componentheader";
+import { ComponentHeader } from "./ComponentHeader";
 
 interface WeeklyForecastProps {
   data: DailyWeather;
@@ -52,9 +52,7 @@ const DayTemperaturesBar: React.FC<DayTemperaturesBarProps> = ({
 
 const WeeklyForecast: React.FC<WeeklyForecastProps> = ({ data }) => {
   return (
-    <div
-      className="component-container"
-      style={{ height: "100%" }}>
+    <div className="component-container" style={{ height: "100%" }}>
       <ComponentHeader title="Weekly Forecast" icon={Calendar} />
       <div style={{ paddingBottom: "18px" }}>
         {data.time.map((day, index) => {
@@ -75,7 +73,7 @@ const WeeklyForecast: React.FC<WeeklyForecastProps> = ({ data }) => {
                 }}
               />
               <div className="weekly-temperatures">
-                <span style={{  textAlign: "start" }}>
+                <span style={{ textAlign: "start" }}>
                   {data.temperature_2m_min[index]}
                 </span>
                 <DayTemperaturesBar

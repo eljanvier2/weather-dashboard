@@ -1,4 +1,4 @@
-import { ComponentHeader } from "./componentheader";
+import { ComponentHeader } from "./ComponentHeader";
 import { getHourMinutes } from "@/utils/gettimedata";
 import Water from "../public/icons/water.png";
 import Image from "next/image";

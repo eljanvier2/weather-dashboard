@@ -2,9 +2,7 @@
 "use client";
 
 import "mapbox-gl/dist/mapbox-gl.css";
-import mapboxgl from "mapbox-gl";
 import ReactMapGL, { Layer, LayerProps, Source } from "react-map-gl";
-import { useRef, useEffect } from "react";
 require("dotenv").config();
 
 interface MapComponentProps {
