@@ -1,7 +1,7 @@
 import Sun from "@/public/icons/sun.png";
 import Image from "next/image";
-import { ComponentHeader } from "./ComponentHeader";
-import MulticolorScale from "./MulticolorScale";
+import { ComponentHeader } from "../ComponentHeader";
+import MulticolorScale from "./subcomponents/MulticolorScale";
 
 interface UvIndexProps {
   uv: number;

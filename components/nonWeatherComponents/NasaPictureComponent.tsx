@@ -1,10 +1,10 @@
 import Image from "next/image";
-import { ComponentHeader } from "./ComponentHeader";
-import Planet from "../public/icons/planet.png";
+import { ComponentHeader } from "../ComponentHeader";
+import Planet from "@/public/icons/planet.png";
 import { NasaPicture } from "@/type";
 import YouTube from "react-youtube";
 
-export const NasaPictureComponent = ({ picture }: { picture: NasaPicture }) => {
+const NasaPictureComponent = ({ picture }: { picture: NasaPicture }) => {
   return (
     <div
       className="component-container"
@@ -56,3 +56,5 @@ export const NasaPictureComponent = ({ picture }: { picture: NasaPicture }) => {
     </div>
   );
 };
+
+export default NasaPictureComponent;

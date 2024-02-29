@@ -7,7 +7,7 @@ interface HourlyForecastProps {
   data: HourlyWeather;
 }
 
-export const HourlyForecast = ({ data }: HourlyForecastProps) => {
+const HourlyForecast = ({ data }: HourlyForecastProps) => {
   var x = 0;
   return (
     <div
@@ -47,3 +47,5 @@ export const HourlyForecast = ({ data }: HourlyForecastProps) => {
     </div>
   );
 };
+
+export default HourlyForecast;

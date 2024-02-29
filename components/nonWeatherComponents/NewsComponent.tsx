@@ -2,7 +2,7 @@ import { News } from "@/type";
 import { getDay } from "@/utils/gettimedata";
 import NewsIcon from "@/public/icons/news-icon.png";
 import Image from "next/image";
-import { ComponentHeader } from "./ComponentHeader";
+import { ComponentHeader } from "../ComponentHeader";
 import Link from "next/link";
 import OpenLink from "@/public/icons/open-link.png";
 import { useState } from "react";

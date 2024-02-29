@@ -1,6 +1,6 @@
-import Compass from "./Compass";
-import { ComponentHeader } from "./ComponentHeader";
-import Wind from "../public/icons/wind.png";
+import Compass from "./subcomponents/Compass";
+import { ComponentHeader } from "../ComponentHeader";
+import Wind from "@/public/icons/wind.png";
 
 const WindComponent = ({ speed, deg }: { speed: number; deg: number }) => {
   return (

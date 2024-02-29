@@ -1,7 +1,5 @@
-import { ComponentHeader } from "./ComponentHeader";
-import { getHourMinutes } from "@/utils/gettimedata";
-import Water from "../public/icons/water.png";
-import Image from "next/image";
+import { ComponentHeader } from "../ComponentHeader";
+import Water from "@/public/icons/water.png";
 
 const HumidityComponent = ({ humidity }: { humidity: number }) => {
   const status = (degre: number) => {

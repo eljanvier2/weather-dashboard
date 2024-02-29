@@ -3,7 +3,7 @@ import Image from "next/image";
 import { weatherIcon } from "@/utils/iconparsing";
 import { DailyWeather } from "@/type";
 import Calendar from "@/public/icons/calendar.png";
-import { ComponentHeader } from "./ComponentHeader";
+import { ComponentHeader } from "../ComponentHeader";
 
 interface WeeklyForecastProps {
   data: DailyWeather;

@@ -1,6 +1,6 @@
-import { ComponentHeader } from "./ComponentHeader";
+import { ComponentHeader } from "../ComponentHeader";
 import { getHourMinutes } from "@/utils/gettimedata";
-import Water from "../public/icons/water.png";
+import Water from "@/public/icons/water.png";
 import Image from "next/image";
 
 const FeelsLike = ({

@@ -1,5 +1,5 @@
 import React from "react";
-import TimeComponent from "@/components/TimeComponent";
+import TimeComponent from "@/components/weatherComponents/subcomponents/TimeComponent";
 import { getDay, getHourMinutes } from "@/utils/gettimedata";
 import Image from "next/image";
 import { weatherIcon, getWeatherDescription } from "@/utils/iconparsing";
