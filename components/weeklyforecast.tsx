@@ -54,7 +54,7 @@ const WeeklyForecast: React.FC<WeeklyForecastProps> = ({ data }) => {
   return (
     <div
       className="component-container"
-      style={{ width: "100%", height: "100%" }}>
+      style={{ height: "100%" }}>
       <ComponentHeader title="Weekly Forecast" icon={Calendar} />
       <div style={{ paddingBottom: "18px" }}>
         {data.time.map((day, index) => {

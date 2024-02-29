@@ -45,7 +45,7 @@ const UvIndex = (data: UvIndexProps) => {
   return (
     <div
       className="component-container"
-      style={{ height: "180px", width: "100%" }}>
+      style={{ height: "180px", }}>
       <ComponentHeader title="Max UV Index" icon={Sun} />
       <div
         style={{

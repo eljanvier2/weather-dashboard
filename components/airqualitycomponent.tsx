@@ -36,11 +36,7 @@ const AirQualityComponent = ({ airQuality }: { airQuality: number }) => {
   };
 
   return (
-    <div
-      className="component-container"
-      style={{
-        width: "100%",
-      }}>
+    <div className="component-container">
       <ComponentHeader title="Air Quality" icon={Virus} />
       <span style={{ fontSize: "2rem" }}>
         {airQualityDescription(airQuality)}

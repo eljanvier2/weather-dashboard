@@ -17,8 +17,6 @@ const MapComponent = ({ lat, lon }: MapComponentProps) => {
     <div
       className="component-container"
       style={{
-        minWidth: "350px",
-        width: "100%",
         height: "375px",
         padding: 0,
         alignSelf: "flex-start",

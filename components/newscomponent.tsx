@@ -24,9 +24,7 @@ const NewsComponent = ({ news }: NewsComponentProps) => {
     );
   };
   return (
-    <div
-      className="component-container"
-      style={{ width: "100%", height: "180px" }}>
+    <div className="component-container" style={{ height: "180px" }}>
       <ComponentHeader title="Country News" icon={NewsIcon} />
       <div
         style={{
@@ -34,7 +32,7 @@ const NewsComponent = ({ news }: NewsComponentProps) => {
           flexDirection: "column",
           justifyContent: "space-between",
           height: "100%",
-          paddingBottom:"27px"
+          paddingBottom: "27px",
         }}>
         <div>
           <div

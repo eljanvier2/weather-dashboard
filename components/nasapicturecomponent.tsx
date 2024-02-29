@@ -9,8 +9,6 @@ export const NasaPictureComponent = ({ picture }: { picture: NasaPicture }) => {
     <div
       className="component-container"
       style={{
-        minWidth: "350px",
-        width: "100%",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",

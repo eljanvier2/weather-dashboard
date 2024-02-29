@@ -52,6 +52,49 @@
 
 @media (min-width: 300px) {
   .weather-grid {
+    align-self: flex-start;
+    grid-template-columns: repeat(1, 1fr);
+    width: 90%;
+  }
+  .component-container {
+    width: 90%;
+  }
+  .humidity-feelslike-component {
+    width: 90%;
+  }
+  .twilight-wind-component {
+    width: 90%;
+  }
+  .map-component {
+    min-width: 90%;
+  }
+  .nasa-component {
+    min-width: 90%;
+  }
+  .othercities-component {
+    width: 90%;
+  }
+}
+
+@media (min-width: 380px ){
+  .weather-grid {
+    align-self: center;
+    grid-template-columns: repeat(1, 1fr);
+    width: 90%;
+  }
+}
+
+@media (min-width: 460px) {
+  .group {
+    width: calc(400px - 10vw);
+  }
+}
+
+@media (min-width: 420px) {
+  .component-container {
+    width: 100%;
+  }
+  .weather-grid {
     grid-template-columns: repeat(1, 1fr);
     width: 90%;
     align-self: center;
@@ -83,22 +126,33 @@
     padding-top: 18px;
   }
 
+  .humidity-feelslike-component {
+    width: 100%;
+  }
+
+  .twilight-wind-component {
+    width: 100%;
+  }
+
   .map-component {
     grid-column: 1;
     grid-row: 6;
     padding-top: 18px;
+    min-width: 350px;
   }
 
   .nasa-component {
     grid-column: 1;
     grid-row: 7;
     padding-top: 18px;
+    min-width: 350px;
   }
 
   .othercities-component {
     grid-column: 1;
     grid-row: 8;
     padding-top: 18px;
+    width: 100%;
   }
 }
 
@@ -252,7 +306,6 @@
   backdrop-filter: blur(3px);
   -webkit-backdrop-filter: blur(3px);
   border-radius: 10px;
-  width: fit-content;
   padding: 18px;
   height: fit-content;
   transition: all 0.5s;
@@ -328,8 +381,8 @@
   line-height: 28px;
   align-items: center;
   position: relative;
-  width: 400px;
   z-index: 2;
+  transition: all 0.5s;
 }
 
 .input {
