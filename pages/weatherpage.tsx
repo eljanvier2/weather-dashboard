@@ -1,7 +1,6 @@
-import React, { Suspense } from "react";
-import { NasaPicture, News } from "@/type";
+import React, { useState, useEffect } from "react";
+import { type NasaPicture, type News } from "@/type";
 import GithubButton from "@/components/GithubButton";
-import { useState, useEffect } from "react";
 import SearchComponent from "@/components/SearchComponent";
 import WeatherGrid from "@/components/WeatherGrid";
 
@@ -13,14 +12,20 @@ interface WeatherPageProps {
   picture: NasaPicture;
 }
 
-const WeatherPage = ({ weatherData, news, picture }: WeatherPageProps) => {
+const WeatherPage: React.FC<WeatherPageProps> = ({
+  weatherData,
+  news,
+  picture,
+}: WeatherPageProps) => {
   const [inputValue, setInputValue] = useState("");
   const [options, setOptions] = useState([]);
 
   useEffect(() => {
     const fetchOptions = async () => {
       if (inputValue) {
-        let res = await fetch(`/api/cityAutocomplete?inputValue=${inputValue}`);
+        const res = await fetch(
+          `/api/cityAutocomplete?inputValue=${inputValue}`
+        );
         const response = await res.json();
         if (response.results.length === 0) {
           setOptions([]);
@@ -69,7 +74,9 @@ const WeatherPage = ({ weatherData, news, picture }: WeatherPageProps) => {
               }
             }}
             autocompleteOptions={options}
-            resetOptionsArray={() => setOptions([])}
+            resetOptionsArray={() => {
+              setOptions([]);
+            }}
           />
           <GithubButton />
         </div>

@@ -1,41 +1,44 @@
-import { ComponentHeader } from "../ComponentHeader";
-import { getHourMinutes } from "@/utils/gettimedata";
-import Water from "@/public/icons/water.png";
-import Image from "next/image";
+import { ComponentHeader } from '../ComponentHeader'
+import Water from '@/public/icons/water.png'
 
-const FeelsLike = ({
+interface FeelsLikeProps {
+  temperature: number
+  feltTemperature: number
+}
+
+const FeelsLike: React.FC<FeelsLikeProps> = ({
   temperature,
-  feltTemperature,
+  feltTemperature
 }: {
-  temperature: number;
-  feltTemperature: number;
+  temperature: number
+  feltTemperature: number
 }) => {
   const status = () => {
     if (feltTemperature < temperature) {
-      return "Feels colder than actual temperature";
+      return 'Feels colder than actual temperature'
     } else if (feltTemperature > temperature) {
-      return "Feels warmer than actual temperature";
+      return 'Feels warmer than actual temperature'
     } else {
-      return "Feels like actual temperature";
+      return 'Feels like actual temperature'
     }
-  };
+  }
   return (
-    <div className="component-container" style={{ height: "170px" }}>
+    <div className="component-container" style={{ height: '170px' }}>
       <ComponentHeader title="Feels like" icon={Water} />
       <div
         style={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          height: "100%",
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          height: '100%'
         }}>
-        <div style={{ display: "flex", flexDirection: "column" }}>
-          <span style={{ fontSize: "2rem" }}>{feltTemperature}°</span>
+        <div style={{ display: 'flex', flexDirection: 'column' }}>
+          <span style={{ fontSize: '2rem' }}>{feltTemperature}°</span>
           <span>{status()}</span>
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default FeelsLike;
+export default FeelsLike

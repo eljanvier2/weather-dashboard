@@ -1,26 +1,30 @@
-import React from "react";
-import TemperatureComponent from "./weatherComponents/TemperatureComponent";
-import WeeklyForecast from "./weatherComponents/WeeklyForecastComponent";
-import UvIndex from "./weatherComponents/UVIndexComponent";
-import HourlyForecast from "./weatherComponents/HourlyForecastComponent";
-import MapComponent from "./nonWeatherComponents/MapComponent";
-import NasaPictureComponent from "./nonWeatherComponents/NasaPictureComponent";
-import SunComponent from "./weatherComponents/SunComponent";
-import WindComponent from "./weatherComponents/WindComponent";
-import AirQualityComponent from "./weatherComponents/AirQualityComponent";
-import NewsComponent from "./nonWeatherComponents/NewsComponent";
-import HumidityComponent from "./weatherComponents/HumidityComponent";
-import FeelsLike from "./weatherComponents/FeelsLikeComponent";
-import OtherCities from "./OtherCities";
-import { News, NasaPicture } from "@/type";
+import React from 'react'
+import TemperatureComponent from './weatherComponents/TemperatureComponent'
+import WeeklyForecast from './weatherComponents/WeeklyForecastComponent'
+import UvIndex from './weatherComponents/UVIndexComponent'
+import HourlyForecast from './weatherComponents/HourlyForecastComponent'
+import MapComponent from './nonWeatherComponents/MapComponent'
+import NasaPictureComponent from './nonWeatherComponents/NasaPictureComponent'
+import SunComponent from './weatherComponents/SunComponent'
+import WindComponent from './weatherComponents/WindComponent'
+import AirQualityComponent from './weatherComponents/AirQualityComponent'
+import NewsComponent from './nonWeatherComponents/NewsComponent'
+import HumidityComponent from './weatherComponents/HumidityComponent'
+import FeelsLike from './weatherComponents/FeelsLikeComponent'
+import OtherCities from './OtherCities'
+import { type News, type NasaPicture } from '@/type'
 
 interface WeatherGridProps {
-  weatherData: any;
-  news: News;
-  picture: NasaPicture;
+  weatherData: any
+  news: News
+  picture: NasaPicture
 }
 
-const WeatherGrid = ({ weatherData, news, picture }: WeatherGridProps) => {
+const WeatherGrid: React.FC<WeatherGridProps> = ({
+  weatherData,
+  news,
+  picture
+}: WeatherGridProps) => {
   return (
     <>
       <div className="weather-grid">
@@ -29,7 +33,7 @@ const WeatherGrid = ({ weatherData, news, picture }: WeatherGridProps) => {
             data={weatherData.current}
             dailyExtremes={{
               max: weatherData.daily.temperature_2m_max[0],
-              min: weatherData.daily.temperature_2m_min[0],
+              min: weatherData.daily.temperature_2m_min[0]
             }}
             city={weatherData.city}
             timezone={weatherData.timezone}
@@ -41,11 +45,11 @@ const WeatherGrid = ({ weatherData, news, picture }: WeatherGridProps) => {
         <div
           className="uvindex-hourlyforecast-component"
           style={{
-            height: "100%",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "space-between",
-            gap: "18px",
+            height: '100%',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'space-between',
+            gap: '18px'
           }}>
           <UvIndex uv={weatherData.daily.uv_index_max[0]} />
           <HourlyForecast data={weatherData.hourly} />
@@ -53,20 +57,20 @@ const WeatherGrid = ({ weatherData, news, picture }: WeatherGridProps) => {
         <div
           className="airquality-twilight-wind-component"
           style={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "space-between",
-            height: "100%",
-            gap: "18px",
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'space-between',
+            height: '100%',
+            gap: '18px'
           }}>
           <AirQualityComponent airQuality={parseInt(weatherData.airquality)} />
           <div
             className="twilight-wind-component"
             style={{
-              display: "flex",
-              justifyContent: "space-between",
-              height: "100%",
-              gap: "18px",
+              display: 'flex',
+              justifyContent: 'space-between',
+              height: '100%',
+              gap: '18px'
             }}>
             <SunComponent
               sunrise={weatherData.daily.sunrise[0]}
@@ -81,16 +85,16 @@ const WeatherGrid = ({ weatherData, news, picture }: WeatherGridProps) => {
         <div className="news-humidity-feelslike-component">
           <div
             style={{
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "space-between",
-              height: "100%",
-              gap: "25px",
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'space-between',
+              height: '100%',
+              gap: '25px'
             }}>
             <NewsComponent news={news} />
             <div
               className="humidity-feelslike-component"
-              style={{ display: "flex", gap: "18px" }}>
+              style={{ display: 'flex', gap: '18px' }}>
               <HumidityComponent
                 humidity={weatherData.current.relative_humidity_2m}
               />
@@ -115,7 +119,7 @@ const WeatherGrid = ({ weatherData, news, picture }: WeatherGridProps) => {
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default WeatherGrid;
+export default WeatherGrid

@@ -1,9 +1,9 @@
-const GithubButton = () => {
+const GithubButton: React.FC = () => {
   return (
     <button
       className="Btn"
       onClick={() => {
-        window.open("https://github.com/eljanvier2/weather-dashboard");
+        window.open('https://github.com/eljanvier2/weather-dashboard')
       }}>
       <svg
         className="svgIcon"
@@ -14,7 +14,7 @@ const GithubButton = () => {
       </svg>
       <span className="text">Github</span>
     </button>
-  );
-};
+  )
+}
 
-export default GithubButton;
+export default GithubButton

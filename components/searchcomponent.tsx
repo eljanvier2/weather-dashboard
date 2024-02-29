@@ -1,15 +1,21 @@
-import { City } from "@/type";
-import Link from "next/link";
-import React from "react";
+import { type City } from '@/type'
+import Link from 'next/link'
+import React from 'react'
 
-const SearchComponent = ({
+interface SearchComponentProps {
+  onChange: Function
+  autocompleteOptions: City[]
+  resetOptionsArray: Function
+}
+
+const SearchComponent: React.FC<SearchComponentProps> = ({
   onChange,
   autocompleteOptions,
-  resetOptionsArray,
+  resetOptionsArray
 }: {
-  onChange: Function;
-  autocompleteOptions: Array<City>;
-  resetOptionsArray: Function;
+  onChange: Function
+  autocompleteOptions: City[]
+  resetOptionsArray: Function
 }) => {
   return (
     <div>
@@ -29,20 +35,20 @@ const SearchComponent = ({
           onChange={(e) => onChange(e.target.value)}
           style={{
             borderRadius:
-              autocompleteOptions.length > 0 ? "10px 10px 0 0" : "10px",
+              autocompleteOptions.length > 0 ? '10px 10px 0 0' : '10px'
           }}
         />
       </div>
       {autocompleteOptions.length > 0 && (
         <div
           style={{
-            position: "absolute",
-            width: "403px",
-            padding: "18px",
-            marginLeft: "-1px",
-            borderRadius: "0 0 10px 10px",
+            position: 'absolute',
+            width: '403px',
+            padding: '18px',
+            marginLeft: '-1px',
+            borderRadius: '0 0 10px 10px',
             zIndex: 1,
-            backgroundColor: "#16171d",
+            backgroundColor: '#16171d'
           }}>
           {autocompleteOptions.map((option, index) => (
             <React.Fragment key={index}>
@@ -56,23 +62,23 @@ const SearchComponent = ({
               {index < autocompleteOptions.length - 1 && (
                 <hr
                   style={{
-                    border: "1px solid #bdbecb",
-                    width: "100%",
-                    margin: "auto",
-                    opacity: "0.4",
-                    borderRadius: "0.5px",
-                    marginTop: "5px",
-                    marginBottom: "5px",
+                    border: '1px solid #bdbecb',
+                    width: '100%',
+                    margin: 'auto',
+                    opacity: '0.4',
+                    borderRadius: '0.5px',
+                    marginTop: '5px',
+                    marginBottom: '5px'
                   }}
                 />
-              )}{" "}
+              )}{' '}
               {/* Render a horizontal line as a separator if this is not the last element */}
             </React.Fragment>
           ))}
         </div>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default SearchComponent;
+export default SearchComponent

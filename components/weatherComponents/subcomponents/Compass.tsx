@@ -1,13 +1,14 @@
 interface CompassProps {
-  speed: number;
-  deg: number;
+  speed: number
+  deg: number
 }
-export default function Compass({ speed, deg }: CompassProps) {
+
+export default function Compass ({ speed, deg }: CompassProps) {
   return (
     <>
       <div
         className="relative -mt-5 flex h-[10rem] w-[10rem] items-center justify-center md:-mt-5 md:h-[9rem] md:w-[9rem]"
-        style={{ scale: "0.8" }}>
+        style={{ scale: '0.8' }}>
         <div className="absolute text-sm font-semibold">
           {Math.round(speed)}m/s
         </div>
@@ -440,5 +441,5 @@ export default function Compass({ speed, deg }: CompassProps) {
         </svg>
       </div>
     </>
-  );
+  )
 }
