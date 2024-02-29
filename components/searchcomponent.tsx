@@ -3,9 +3,9 @@ import Link from 'next/link'
 import React from 'react'
 
 interface SearchComponentProps {
-  onChange: Function
+  onChange: (value: string) => void
   autocompleteOptions: City[]
-  resetOptionsArray: Function
+  resetOptionsArray: () => void
 }
 
 const SearchComponent: React.FC<SearchComponentProps> = ({

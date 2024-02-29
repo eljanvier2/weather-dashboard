@@ -1,5 +1,4 @@
 import Sun from '@/public/icons/sun.png'
-import Image from 'next/image'
 import { ComponentHeader } from '../ComponentHeader'
 import MulticolorScale from './subcomponents/MulticolorScale'
 
@@ -14,7 +13,7 @@ const UvIndex: React.FC<UvIndexProps> = (data: UvIndexProps) => {
   const range = max - min
   const uvPercentage = (uvIndex / range) * 100
 
-  const uvDescription = (index: number) => {
+  const uvDescription = (index: number): string => {
     if (index < 3) {
       return 'Low'
     } else if (index < 6) {
@@ -28,7 +27,7 @@ const UvIndex: React.FC<UvIndexProps> = (data: UvIndexProps) => {
     }
   }
 
-  const protection = (index: number) => {
+  const protection = (index: number): string => {
     if (index < 3) {
       return 'Minimal protection required'
     } else if (index < 6) {

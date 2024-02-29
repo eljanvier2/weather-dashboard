@@ -1,6 +1,7 @@
 import { type HourlyWeather } from '@/type'
 import { weatherIcon } from '@/utils/iconparsing'
 import Image from 'next/image'
+import { type ReactNode } from 'react'
 
 interface HourlyForecastProps {
   data: HourlyWeather
@@ -20,7 +21,7 @@ const HourlyForecast: React.FC<HourlyForecastProps> = ({
         height: '170px',
         gap: '35px'
       }}>
-      {data.time.map((hour, index) => {
+      {data.time.map((hour, index): ReactNode => {
         const currentHour = new Date().getHours()
         const hourToCompare = parseInt(hour.split('T')[1].split(':')[0])
         if (hourToCompare >= currentHour && x < 5) {
@@ -44,6 +45,7 @@ const HourlyForecast: React.FC<HourlyForecastProps> = ({
             </div>
           )
         }
+        return null
       })}
     </div>
   )

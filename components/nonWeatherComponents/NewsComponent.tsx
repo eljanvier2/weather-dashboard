@@ -16,7 +16,7 @@ const NewsComponent: React.FC<NewsComponentProps> = ({
 }: NewsComponentProps) => {
   const [hover, setHover] = useState(false)
 
-  const isToday = (someDate: string) => {
+  const isToday = (someDate: string): boolean => {
     const today = new Date()
     const date = new Date(someDate)
     return (

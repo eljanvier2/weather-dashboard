@@ -3,7 +3,9 @@
 
 import 'mapbox-gl/dist/mapbox-gl.css'
 import ReactMapGL from 'react-map-gl'
-require('dotenv').config()
+import dotenv from 'dotenv'
+
+dotenv.config()
 
 interface MapComponentProps {
   lat: number

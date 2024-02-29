@@ -3,7 +3,7 @@ interface CompassProps {
   deg: number
 }
 
-export default function Compass ({ speed, deg }: CompassProps) {
+const Compass: React.FC<CompassProps> = ({ speed, deg }: CompassProps) => {
   return (
     <>
       <div
@@ -443,3 +443,5 @@ export default function Compass ({ speed, deg }: CompassProps) {
     </>
   )
 }
+
+export default Compass

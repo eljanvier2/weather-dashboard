@@ -1,35 +1,35 @@
-import React, { useState, useEffect } from "react";
-import { type NasaPicture, type News } from "@/type";
-import GithubButton from "@/components/GithubButton";
-import SearchComponent from "@/components/SearchComponent";
-import WeatherGrid from "@/components/WeatherGrid";
+import React, { useState, useEffect } from 'react'
+import { type NasaPicture, type News } from '@/type'
+import GithubButton from '@/components/GithubButton'
+import SearchComponent from '@/components/SearchComponent'
+import WeatherGrid from '@/components/WeatherGrid'
 
-require("dotenv").config();
+require('dotenv').config()
 
 interface WeatherPageProps {
-  weatherData: any;
-  news: News;
-  picture: NasaPicture;
+  weatherData: any
+  news: News
+  picture: NasaPicture
 }
 
 const WeatherPage: React.FC<WeatherPageProps> = ({
   weatherData,
   news,
-  picture,
+  picture
 }: WeatherPageProps) => {
-  const [inputValue, setInputValue] = useState("");
-  const [options, setOptions] = useState([]);
+  const [inputValue, setInputValue] = useState('')
+  const [options, setOptions] = useState([])
 
   useEffect(() => {
     const fetchOptions = async () => {
       if (inputValue) {
         const res = await fetch(
           `/api/cityAutocomplete?inputValue=${inputValue}`
-        );
-        const response = await res.json();
+        )
+        const response = await res.json()
         if (response.results.length === 0) {
-          setOptions([]);
-          return;
+          setOptions([])
+          return
         }
         const options = response.results.map((result: any) => ({
           name: result.city,
@@ -37,45 +37,45 @@ const WeatherPage: React.FC<WeatherPageProps> = ({
           country_code: result.country_code,
           latitude: result.lat,
           longitude: result.lon,
-          timezone: result.timezone.name.replace("/", "%2F"),
-        }));
-        setOptions(options);
-        return;
+          timezone: result.timezone.name.replace('/', '%2F')
+        }))
+        setOptions(options)
+        return
       }
-      setOptions([]);
-    };
-    fetchOptions();
-  }, [inputValue]);
+      setOptions([])
+    }
+    fetchOptions()
+  }, [inputValue])
   return (
-    <div style={{ overflowX: "hidden" }}>
+    <div style={{ overflowX: 'hidden' }}>
       <title>{`${weatherData.city} - Weather`}</title>
       <div
         className={
           weatherData.current.is_day === 1
-            ? "weatherbody-day"
-            : "weatherbody-night"
+            ? 'weatherbody-day'
+            : 'weatherbody-night'
         }>
         <div
           style={{
-            width: "100%",
-            height: "fit-content",
-            display: "flex",
-            justifyContent: "space-between",
-            paddingRight: "1vw",
-            paddingTop: "1vh",
-            paddingBottom: "1vh",
+            width: '100%',
+            height: 'fit-content',
+            display: 'flex',
+            justifyContent: 'space-between',
+            paddingRight: '1vw',
+            paddingTop: '1vh',
+            paddingBottom: '1vh'
           }}>
           <div />
           <SearchComponent
             onChange={(e: string) => {
-              setInputValue(e);
+              setInputValue(e)
               if (e.length === 0) {
-                setOptions([]);
+                setOptions([])
               }
             }}
             autocompleteOptions={options}
             resetOptionsArray={() => {
-              setOptions([]);
+              setOptions([])
             }}
           />
           <GithubButton />
@@ -83,19 +83,19 @@ const WeatherPage: React.FC<WeatherPageProps> = ({
         <WeatherGrid weatherData={weatherData} news={news} picture={picture} />
       </div>
     </div>
-  );
-};
+  )
+}
 
-export async function getServerSideProps(context: {
+export async function getServerSideProps (context: {
   query: {
-    lat: any;
-    lon: any;
-    city: string;
-    timezone: string;
-    country: string;
-  };
+    lat: any
+    lon: any
+    city: string
+    timezone: string
+    country: string
+  }
 }) {
-  const { lat, lon, city, timezone, country } = context.query;
+  const { lat, lon, city, timezone, country } = context.query
 
   const [weatherres, airqualitres, newsres, nasares] = await Promise.all([
     fetch(
@@ -104,7 +104,7 @@ export async function getServerSideProps(context: {
       }&longitude=${
         lon ?? -0.5805
       }&current=relative_humidity_2m,temperature_2m,is_day,weather_code,wind_speed_10m,wind_direction_10m,apparent_temperature&hourly=temperature_2m,weather_code&daily=weather_code,temperature_2m_max,temperature_2m_min,sunrise,sunset,uv_index_max&timezone=${
-        timezone ?? "Europe%2FLondon"
+        timezone ?? 'Europe%2FLondon'
       }`
     ),
     fetch(
@@ -113,37 +113,37 @@ export async function getServerSideProps(context: {
       }&longitude=${lon ?? -0.5805}&hourly=european_aqi&forecast_days=1`
     ),
     fetch(
-      `https://newsapi.org/v2/top-headlines?country=${country ?? "fr"}&apiKey=${
+      `https://newsapi.org/v2/top-headlines?country=${country ?? 'fr'}&apiKey=${
         process.env.NEWS_API_KEY
       }`
     ),
     fetch(
       `https://api.nasa.gov/planetary/apod?api_key=${process.env.NASA_API_KEY}&count=1`
-    ),
-  ]);
-  const weatherData = await weatherres.json();
-  const airqualityData = await airqualitres.json();
-  const newsData = await newsres.json();
-  const articles = newsData.articles;
-  const news = articles[Math.floor(Math.random() * articles.length)];
-  const picturejson = await nasares.json();
+    )
+  ])
+  const weatherData = await weatherres.json()
+  const airqualityData = await airqualitres.json()
+  const newsData = await newsres.json()
+  const articles = newsData.articles
+  const news = articles[Math.floor(Math.random() * articles.length)]
+  const picturejson = await nasares.json()
   const picture = {
     date: picturejson[0].date,
     title: picturejson[0].title,
     url: picturejson[0].url,
-    copyright: picturejson[0].copyright ?? "NASA",
-  };
+    copyright: picturejson[0].copyright ?? 'NASA'
+  }
   if (airqualityData) {
-    weatherData.airquality = airqualityData.hourly.european_aqi[0];
+    weatherData.airquality = airqualityData.hourly.european_aqi[0]
   } else {
-    weatherData.airquality = 0;
+    weatherData.airquality = 0
   }
   if (city) {
-    weatherData.city = city;
+    weatherData.city = city
   } else {
-    weatherData.city = "Bordeaux";
+    weatherData.city = 'Bordeaux'
   }
-  return { props: { weatherData, news, picture } };
+  return { props: { weatherData, news, picture } }
 }
 
-export default WeatherPage;
+export default WeatherPage

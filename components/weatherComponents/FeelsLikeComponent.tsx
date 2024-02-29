@@ -13,7 +13,7 @@ const FeelsLike: React.FC<FeelsLikeProps> = ({
   temperature: number
   feltTemperature: number
 }) => {
-  const status = () => {
+  const status = (): string => {
     if (feltTemperature < temperature) {
       return 'Feels colder than actual temperature'
     } else if (feltTemperature > temperature) {

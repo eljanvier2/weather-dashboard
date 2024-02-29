@@ -10,7 +10,7 @@ const HumidityComponent: React.FC<HumidityComponentProps> = ({
 }: {
   humidity: number
 }) => {
-  const status = (degre: number) => {
+  const status = (degre: number): string => {
     if (degre < 30) {
       return 'Low humidity, dry air'
     } else if (degre < 60) {

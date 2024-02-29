@@ -11,7 +11,7 @@ const AirQualityComponent: React.FC<AirQualityComponentProps> = ({
 }: {
   airQuality: number
 }) => {
-  const airQualityDescription = (index: number) => {
+  const airQualityDescription = (index: number): string => {
     if (index < 20) {
       return 'Good'
     } else if (index < 40) {
@@ -27,7 +27,7 @@ const AirQualityComponent: React.FC<AirQualityComponentProps> = ({
     }
   }
 
-  const warnings = (index: number) => {
+  const warnings = (index: number): string => {
     if (index < 20) {
       return 'Air quality is good, and air pollution poses little or no risk.'
     } else if (index < 40) {

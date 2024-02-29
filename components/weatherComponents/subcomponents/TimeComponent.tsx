@@ -22,7 +22,7 @@ const TimeComponent: React.FC<TimeComponentProps> = (
   return (
     <div>
       <p>
-        {time
+        {(time != null)
           ? time.toLocaleTimeString('en-US', { timeZone: props.timezone })
           : 'Loading...'}
       </p>

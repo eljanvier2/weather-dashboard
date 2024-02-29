@@ -2,7 +2,7 @@ import CityButton from './CityButton'
 import CityIcon from '@/public/icons/city-icon.png'
 import { ComponentHeader } from './ComponentHeader'
 
-const OtherCities = () => {
+const OtherCities: React.FC = () => {
   const cities = [
     {
       name: 'Bordeaux',
