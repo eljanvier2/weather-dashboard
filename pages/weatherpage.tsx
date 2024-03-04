@@ -135,12 +135,12 @@ export async function getServerSideProps (context: {
     url: picturejson[0].url,
     copyright: picturejson[0].copyright ?? 'NASA'
   }
-  if (airqualityData.length > 0) {
+  if (airqualityData !== undefined && airqualityData.length > 0) {
     weatherData.airquality = airqualityData.hourly.european_aqi[0]
   } else {
     weatherData.airquality = 0
   }
-  if (city.length > 0) {
+  if (city !== undefined && city.length > 0) {
     weatherData.city = city
   } else {
     weatherData.city = 'Bordeaux'
