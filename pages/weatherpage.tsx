@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react'
-import { type NasaPicture, type News } from '@/type'
+import { type City, type NasaPicture, type News } from '@/type'
 import GithubButton from '@/components/GithubButton'
 import SearchComponent from '@/components/SearchComponent'
 import WeatherGrid from '@/components/WeatherGrid'
 
-require('dotenv').config()
+import dotenv from 'dotenv'
+dotenv.config()
 
 interface WeatherPageProps {
   weatherData: any
@@ -17,12 +18,12 @@ const WeatherPage: React.FC<WeatherPageProps> = ({
   news,
   picture
 }: WeatherPageProps) => {
-  const [inputValue, setInputValue] = useState('')
-  const [options, setOptions] = useState([])
+  const [inputValue, setInputValue] = useState<string>('')
+  const [options, setOptions] = useState<City[]>([])
 
   useEffect(() => {
-    const fetchOptions = async () => {
-      if (inputValue) {
+    const fetchOptions = async (): Promise<void> => {
+      if (inputValue.length > 0) {
         const res = await fetch(
           `/api/cityAutocomplete?inputValue=${inputValue}`
         )
@@ -31,7 +32,7 @@ const WeatherPage: React.FC<WeatherPageProps> = ({
           setOptions([])
           return
         }
-        const options = response.results.map((result: any) => ({
+        const options: City[] = response.results.map((result: any) => ({
           name: result.city,
           country: result.country,
           country_code: result.country_code,
@@ -44,6 +45,7 @@ const WeatherPage: React.FC<WeatherPageProps> = ({
       }
       setOptions([])
     }
+    // eslint-disable-next-line @typescript-eslint/no-floating-promises
     fetchOptions()
   }, [inputValue])
   return (
@@ -94,7 +96,7 @@ export async function getServerSideProps (context: {
     timezone: string
     country: string
   }
-}) {
+}): Promise<{ props: any }> {
   const { lat, lon, city, timezone, country } = context.query
 
   const [weatherres, airqualitres, newsres, nasares] = await Promise.all([
@@ -133,12 +135,12 @@ export async function getServerSideProps (context: {
     url: picturejson[0].url,
     copyright: picturejson[0].copyright ?? 'NASA'
   }
-  if (airqualityData) {
+  if (airqualityData.length > 0) {
     weatherData.airquality = airqualityData.hourly.european_aqi[0]
   } else {
     weatherData.airquality = 0
   }
-  if (city) {
+  if (city.length > 0) {
     weatherData.city = city
   } else {
     weatherData.city = 'Bordeaux'

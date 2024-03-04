@@ -63,7 +63,7 @@ const WeatherGrid: React.FC<WeatherGridProps> = ({
             height: '100%',
             gap: '18px'
           }}>
-          <AirQualityComponent airQuality={parseInt(weatherData.airquality)} />
+          <AirQualityComponent airQuality={parseInt(String(weatherData.airquality))} />
           <div
             className="twilight-wind-component"
             style={{

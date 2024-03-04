@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import { getDay } from '@/utils/gettimedata'
 import Image from 'next/image'
 import { weatherIcon } from '@/utils/iconparsing'

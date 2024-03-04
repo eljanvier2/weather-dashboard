@@ -13,9 +13,9 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
   autocompleteOptions,
   resetOptionsArray
 }: {
-  onChange: Function
+  onChange: (value: string) => void
   autocompleteOptions: City[]
-  resetOptionsArray: Function
+  resetOptionsArray: () => void
 }) => {
   return (
     <div>
@@ -32,7 +32,7 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
           type="search"
           placeholder="Search city..."
           name="searchbar"
-          onChange={(e) => onChange(e.target.value)}
+          onChange={(e) => { onChange(e.target.value) }}
           style={{
             borderRadius:
               autocompleteOptions.length > 0 ? '10px 10px 0 0' : '10px'
@@ -54,7 +54,7 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
             <React.Fragment key={index}>
               <Link
                 href={`/weatherpage?lat=${option.latitude}&lon=${option.longitude}&city=${option.name}&timezone=${option.timezone}&country_code=${option.country_code}`}
-                onClick={() => resetOptionsArray()}>
+                onClick={() => { resetOptionsArray() }}>
                 <div>
                   {option.name}, {option.country}
                 </div>
