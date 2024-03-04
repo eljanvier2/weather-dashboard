@@ -1,17 +1,17 @@
 import React from 'react'
-import TemperatureComponent from './weatherComponents/TemperatureComponent'
-import WeeklyForecast from './weatherComponents/WeeklyForecastComponent'
-import UvIndex from './weatherComponents/UVIndexComponent'
-import HourlyForecast from './weatherComponents/HourlyForecastComponent'
-import MapComponent from './nonWeatherComponents/MapComponent'
-import NasaPictureComponent from './nonWeatherComponents/NasaPictureComponent'
-import SunComponent from './weatherComponents/SunComponent'
-import WindComponent from './weatherComponents/WindComponent'
-import AirQualityComponent from './weatherComponents/AirQualityComponent'
-import NewsComponent from './nonWeatherComponents/NewsComponent'
-import HumidityComponent from './weatherComponents/HumidityComponent'
-import FeelsLike from './weatherComponents/FeelsLikeComponent'
-import OtherCities from './OtherCities'
+import TemperatureComponent from '@/components/weatherComponents/TemperatureComponent'
+import WeeklyForecast from '@/components/weatherComponents/WeeklyForecastComponent'
+import UvIndex from '@/components/weatherComponents/UVIndexComponent'
+import HourlyForecast from '@/components/weatherComponents/HourlyForecastComponent'
+import MapComponent from '@/components/nonWeatherComponents/MapComponent'
+import NasaPictureComponent from '@/components/nonWeatherComponents/NasaPictureComponent'
+import SunComponent from '@/components/weatherComponents/SunComponent'
+import WindComponent from '@/components/weatherComponents/WindComponent'
+import AirQualityComponent from '@/components/weatherComponents/AirQualityComponent'
+import NewsComponent from '@/components/nonWeatherComponents/NewsComponent'
+import HumidityComponent from '@/components/weatherComponents/HumidityComponent'
+import FeelsLike from '@/components/weatherComponents/FeelsLikeComponent'
+import OtherCities from '@/components/OtherCities'
 import { type News, type NasaPicture } from '@/type'
 
 interface WeatherGridProps {
@@ -63,7 +63,9 @@ const WeatherGrid: React.FC<WeatherGridProps> = ({
             height: '100%',
             gap: '18px'
           }}>
-          <AirQualityComponent airQuality={parseInt(String(weatherData.airquality))} />
+          <AirQualityComponent
+            airQuality={parseInt(String(weatherData.airquality))}
+          />
           <div
             className="twilight-wind-component"
             style={{
