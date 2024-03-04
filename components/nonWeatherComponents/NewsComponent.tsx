@@ -1,5 +1,5 @@
 import { type News } from '@/type'
-import { getDay } from '@/utils/gettimedata'
+import { getDay } from '@/utils/GetTimeData'
 import NewsIcon from '@/public/icons/news-icon.png'
 import Image from 'next/image'
 import { ComponentHeader } from '../ComponentHeader'

@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-import { getDay } from '@/utils/gettimedata'
+import { getDay } from '@/utils/GetTimeData'
 import Image from 'next/image'
-import { weatherIcon } from '@/utils/iconparsing'
+import { weatherIcon } from '@/utils/IconParsing'
 import { type DailyWeather } from '@/type'
 import Calendar from '@/public/icons/calendar.png'
 import { ComponentHeader } from '../ComponentHeader'

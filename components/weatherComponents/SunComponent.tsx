@@ -1,6 +1,6 @@
 import { ComponentHeader } from '../ComponentHeader'
 import Sun from '@/public/icons/fog.png'
-import { getHourMinutes } from '@/utils/gettimedata'
+import { getHourMinutes } from '@/utils/GetTimeData'
 import Sunrise from '@/public/icons/sunrise.png'
 import Sunset from '@/public/icons/sunset.png'
 import Image from 'next/image'

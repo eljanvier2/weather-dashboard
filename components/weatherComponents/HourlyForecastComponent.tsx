@@ -1,5 +1,5 @@
 import { type HourlyWeather } from '@/type'
-import { weatherIcon } from '@/utils/iconparsing'
+import { weatherIcon } from '@/utils/IconParsing'
 import Image from 'next/image'
 import { type ReactNode } from 'react'
 
